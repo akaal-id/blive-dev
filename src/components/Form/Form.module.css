@@ -1,0 +1,80 @@
+.formContainer {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  padding: 8px 8px 8px 24px;
+  height: 44px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--teal);
+  color: var(--cream);
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cream);
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: 0.1em; /* -10% when typing */
+  text-transform: inherit;
+  width: 100%;
+  padding: 0;
+}
+
+.input::placeholder {
+  color: rgba(252, 229, 218, 0.7);
+  letter-spacing: 0.4em; /* maintain original spacing for placeholder */
+  transition: opacity 0.3s ease;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  background-color: var(--cream);
+  color: var(--teal);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitButton:hover {
+  opacity: 0.9;
+}
+
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--cream);
+  letter-spacing: 0.05em; /* Adjust for readability */
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}

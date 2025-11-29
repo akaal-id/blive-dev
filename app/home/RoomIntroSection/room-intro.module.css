@@ -1,0 +1,141 @@
+.section {
+  background-color: var(--terracotta);
+  color: var(--white);
+  padding: 192px 0 96px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  padding: 0 24px;
+}
+
+.leftColumn {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  position: relative;
+  top: 40px;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 64px; /* Adjust based on visual hierarchy */
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading strong {
+  font-weight: 700;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 1rem; /* Align visually with heading text */
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  max-width: 400px;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.featureItem {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  transition: padding-left 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+
+.featureItem:hover {
+  padding-left: 12px;
+  color: var(--cream);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .section {
+    padding: 2rem;
+  }
+
+  .leftColumn {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .label {
+    position: static;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .heading {
+    font-size: 3rem;
+  }
+
+  .imageContainer {
+    height: 300px;
+  }
+}

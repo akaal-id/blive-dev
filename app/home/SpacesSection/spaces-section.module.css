@@ -1,164 +1,183 @@
 .section {
   position: relative;
-  height: 400vh; /* Tall height to allow for scroll trigger */
-  background-color: var(--teal);
-  color: var(--deep-blue);
+  height: 300vh; /* Adjust based on how much scroll distance you want */
+  width: 100%;
+  z-index: 2;
 }
 
-.stickyContainer {
+.stickyWrapper {
   position: sticky;
   top: 0;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
   display: flex;
-  align-items: center;
-  padding-left: 96px; /* Left padding for fixed content */
+  overflow: hidden;
 }
 
-/* Fixed Content Block (Text) */
-.fixedContent {
-  min-width: 400px;
-  max-width: 500px;
+/* Left Panel */
+.leftPanel {
+  width: 50%;
+  height: 100%;
+  background-color: #FAEFD4; /* Beige/Cream color from image */
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  flex-shrink: 0;
-  z-index: 10; /* Ensure text is above scroll track if overlapping occurs */
-  margin-right: 80px; /* Gap between fixed content and scrolling track */
+  padding: clamp(40px, 5vw, 96px);
 }
 
-.label {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-  line-height: 150%;
-  text-transform: uppercase;
-  color: var(--white);
+.textContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.eyebrowWrapper {
+  margin-bottom: 8px;
+}
+
+.eyebrow {
+  color: var(--deep-blue) !important; /* Override default cream color */
+  letter-spacing: 0.2em;
+  font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .heading {
   font-family: var(--font-display);
-  font-size: 80px; /* Large heading */
+  font-size: clamp(32px, 5vw, 64px);
   line-height: 1;
   font-weight: 700;
   color: var(--deep-blue);
   text-transform: uppercase;
+  margin: 0;
 }
 
 .description {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.6;
-  font-weight: 500;
   color: var(--deep-blue);
+  font-weight: 500;
+  max-width: 400px;
 }
 
-/* Scrolling Track Wrapper */
-.trackWrapper {
-  flex-grow: 1;
+/* Right Panel */
+.rightPanel {
+  width: 50%;
   height: 100%;
+  background-color: var(--teal);
   overflow: hidden;
   display: flex;
   align-items: center;
+  /* Add relative positioning for any potential overlays */
+  position: relative;
 }
 
-.horizontalTrack {
+.sliderTrack {
   display: flex;
+  height: 80%; /* Adjust based on desired image height relative to screen */
   align-items: center;
-  height: 100%;
-  gap: 80px; /* Space between items */
-  width: max-content; /* Ensure track takes full width of content */
+  padding-left: 80px; /* Initial padding */
+  padding-right: 80px;
+  gap: 40px;
   will-change: transform;
-  padding-right: 96px; /* Padding at end of scroll */
 }
 
-/* Image Blocks */
 .imageBlock {
+  height: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Gap between image and label */
-  height: 60vh; /* Fixed height relative to viewport */
-  width: auto;
+  gap: 16px;
   flex-shrink: 0;
 }
 
 .imageContainer {
   position: relative;
-  aspect-ratio: 16/9; /* Landscape */
   height: 100%;
+  aspect-ratio: 3/2;
+  width: auto;
   overflow: hidden;
-}
-
-.imageContainer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--teal);
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 1;
 }
 
 .image {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  transition: transform 0.5s ease-out;
 }
 
 .imageLabel {
-  color: var(--white); /* Or deep-blue depending on preference? Using white for contrast on teal */
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-weight: 400;
+  color: var(--white);
+  margin: 0;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 1024px) {
   .section {
-    height: auto; /* Reset height */
-    padding: 96px 24px;
-  }
-
-  .stickyContainer {
-    position: static;
-    height: auto;
-    overflow: visible;
-    display: block;
-    padding-left: 0;
-  }
-
-  .fixedContent {
-    min-width: 100%;
-    max-width: 100%;
-    margin-right: 0;
-    margin-bottom: 64px;
-  }
-
-  .trackWrapper {
-    display: block;
     height: auto;
   }
 
-  .horizontalTrack {
-    display: flex;
+  .stickyWrapper {
+    position: relative;
+    height: auto;
     flex-direction: column;
-    gap: 64px;
-    padding: 0;
-    transform: none !important; /* Disable JS transform on mobile */
-    width: 100%;
+    top: auto;
   }
 
-  .heading {
-    font-size: 48px;
+  .leftPanel {
+    width: 100%;
+    height: auto;
+    padding: 60px 24px;
+    justify-content: flex-start;
+  }
+
+  .textContent {
+    max-width: 100%;
+    height: auto;
+    gap: 40px;
+    justify-content: flex-start;
+  }
+
+  .topContent {
+    gap: 24px;
+  }
+
+  .description {
+    margin-top: 0;
+    max-width: 100%;
+  }
+
+  .rightPanel {
+    width: 100%;
+    height: auto;
+    overflow-x: auto; /* Allow native horizontal scroll on mobile */
+    padding: 40px 0;
+  }
+
+  .sliderTrack {
+    padding: 0 24px;
+    height: auto;
+    width: max-content; /* Ensure track wraps content */
+    transform: none !important; /* Disable JS transform */
   }
 
   .imageBlock {
-    width: 100%;
     height: auto;
+    width: 300px; /* Fixed width for mobile cards */
   }
-  
+
   .imageContainer {
-    aspect-ratio: 16/9;
-    height: auto;
     width: 100%;
+    height: 400px;
   }
 }

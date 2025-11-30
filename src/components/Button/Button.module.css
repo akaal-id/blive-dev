@@ -1,6 +1,6 @@
 .baseButton {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   line-height: 100%;
   letter-spacing: 0.4em;
   text-transform: uppercase; /* "auto capitalization" usually implies capitalizing, but "uppercase" matches 40% spacing usually */

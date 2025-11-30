@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import RoomCard from '@/src/components/RoomCard/RoomCard';
 import { roomData } from '@/src/lib/roomdata';
@@ -13,10 +13,25 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const RoomsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const listWrapperRef = useRef<HTMLDivElement>(null);
+
+  // Flatten all images to create a sequence of slides
+  const slides = useMemo(() => {
+    return roomData.flatMap((room, roomIndex) => 
+      room.images.map((image, imageIndex) => ({
+        ...room,
+        image,
+        roomIndex,
+        imageIndex,
+        totalImagesInRoom: room.images.length
+      }))
+    );
+  }, []);
+
+  const activeRoomIndex = slides[currentSlideIndex]?.roomIndex ?? 0;
 
   useGSAP(() => {
     if (!listRef.current || !listWrapperRef.current || listRef.current.children.length === 0) return;
@@ -26,38 +41,43 @@ const RoomsSection = () => {
     
     // Get the height of a single item
     const itemHeight = (list.children[0] as HTMLElement).offsetHeight;
-    const totalHeight = list.offsetHeight;
     
     // Set wrapper height to match exactly one item
     gsap.set(wrapper, { height: itemHeight });
 
-    // Create a timeline for the list movement
-    const tl = gsap.timeline({
+    // Create a timeline for the scrolling
+    gsap.timeline({
         scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: "+=2000",
+            end: `+=${slides.length * 1000}`, // Adjust scroll length based on number of slides
             pin: true,
             scrub: 0.5,
             onUpdate: (self) => {
                 // Update active index for images
                 const index = Math.min(
-                    Math.round(self.progress * (roomData.length - 1)),
-                    roomData.length - 1
+                    Math.round(self.progress * (slides.length - 1)),
+                    slides.length - 1
                 );
-                setCurrentIndex(index);
+                setCurrentSlideIndex(index);
             }
         }
     });
 
-    // Move the list up by (totalHeight - itemHeight)
-    // This ensures the last item ends up in view at the end of scroll
-    tl.to(list, {
-        y: -(totalHeight - itemHeight),
-        ease: "none" // Linear movement mapped to scroll
-    });
+  }, { scope: containerRef, dependencies: [slides] });
 
-  }, { scope: containerRef, dependencies: [roomData] });
+  // Effect to animate the list position when the active room changes
+  useGSAP(() => {
+    if (!listRef.current) return;
+    const list = listRef.current;
+    const itemHeight = (list.children[0] as HTMLElement)?.offsetHeight || 0;
+    
+    gsap.to(list, {
+      y: -(activeRoomIndex * itemHeight),
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  }, { dependencies: [activeRoomIndex] });
 
   return (
     <section className={styles.section} ref={containerRef}>
@@ -68,7 +88,7 @@ const RoomsSection = () => {
             <div className={styles.mainTitle}>
               <span>For Everyday</span>
               <div className={styles.titleRow}>
-                <span>LIVING</span>
+                <span><strong>LIVING</strong></span>
                 <Image 
                   src="/icons/sunset.png" 
                   alt="Sunset Icon" 
@@ -86,10 +106,9 @@ const RoomsSection = () => {
                 <div key={room.id}>
                     <RoomCard 
                         room={room} 
-                        isActive={index === currentIndex}
+                        isActive={index === activeRoomIndex}
                         onClick={() => {
-                            // Optional: You might want to scroll to the correct position if clicked
-                            // But since we are scrubbing, it's harder to jump scroll position from here
+                           // Optional: Scroll to start of this room?
                         }}
                     />
                 </div>
@@ -113,17 +132,18 @@ const RoomsSection = () => {
                 </svg>
             </div>
             <div className={styles.imageContainer}>
-                {roomData.map((room, index) => (
+                {slides.map((slide, index) => (
                     <div 
-                        key={room.id} 
-                        className={`${styles.imageSlide} ${index === currentIndex ? styles.activeImage : ''}`}
+                        key={`${slide.id}-${index}`} 
+                        className={`${styles.imageSlide} ${index <= currentSlideIndex ? styles.visibleImage : ''}`}
+                        style={{ zIndex: index }}
                     >
                         <Image
-                        src={room.image}
-                        alt={room.roomName}
+                        src={slide.image}
+                        alt={slide.roomName}
                         fill
                         className={styles.roomImage}
-                        priority={index === 0} // Priority for the first one
+                        priority={index === 0}
                         />
                     </div>
                 ))}

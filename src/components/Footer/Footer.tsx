@@ -34,9 +34,6 @@ const Footer: React.FC = () => {
           <div className={styles.formWrapper}>
              <p className={styles.formLabel}>Join our newsletter to stay up to date on features and releases.</p>
              <Form placeholder="Enter your email" variant="footer" />
-             <p className={styles.disclaimer}>
-                By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company.
-             </p>
           </div>
         </div>
 

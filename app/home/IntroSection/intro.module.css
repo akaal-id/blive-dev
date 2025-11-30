@@ -32,7 +32,7 @@
 /* Left Content */
 .leftContent {
   display: flex;
-  padding: 192px 96px 0 96px; /* Added bottom padding for scroll clearance */
+  padding: clamp(80px, 10vw, 192px) clamp(24px, 5vw, 96px) 0 clamp(24px, 5vw, 96px); /* Added bottom padding for scroll clearance */
   flex-direction: column;
   height: 100%;
   width: 100%;
@@ -50,7 +50,7 @@
 
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -60,7 +60,7 @@
 
 .heading {
   font-family: var(--font-display);
-  font-size: 64px;
+  font-size: clamp(32px, 5vw, 64px);
   line-height: 1;
   font-weight: 500;
   color: var(--deep-blue);
@@ -80,7 +80,7 @@
   align-items: center;
   position: relative;
   width: auto; /* Match sunset icon width approximately, or adjust as needed */
-  height: 54px;
+  height: clamp(32px, 4vw, 54px);
   min-height: 24px; 
 }
 
@@ -99,7 +99,7 @@
 
 .subheading {
   font-family: var(--font-sans);
-  font-size: 20px;
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 600;
   line-height: 1.4;
   max-width: 400px;
@@ -114,7 +114,7 @@
 
 .detailText {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.6;
   color: var(--dark-silver);
 }
@@ -167,19 +167,21 @@
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
-    gap: 80px;
+    gap: 40px;
     padding: 60px 24px;
-    align-items: center; /* Reset alignment for mobile */
+    /* align-items: start; inherited */
   }
 
   .leftContent {
+    order: 2;
     position: static; /* Disable sticky on mobile */
     padding: 0;
   }
   
   .imageArea {
+    order: 1;
     min-height: auto;
-    height: 600px;
+    height: 400px; /* Fixed height for mobile image */
   }
 
   .largeImageWrapper {
@@ -198,6 +200,10 @@
     font-size: 48px;
   }
 
+  .section {
+    flex-flow: row-reverse;
+  }
+
   .waveIconWrapper {
     width: 40px;
     height: 15px;
@@ -209,6 +215,6 @@
   }
   
   .floatingImageWrapper {
-    width: 80%;
+    display: none;
   }
 }

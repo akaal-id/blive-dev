@@ -2,7 +2,7 @@ export interface Room {
   id: number;
   roomName: string;
   details: string;
-  image: string;
+  images: string[];
 }
 
 export const roomData: Room[] = [
@@ -10,18 +10,23 @@ export const roomData: Room[] = [
     id: 1,
     roomName: "The Standard Room",
     details: "16 SQ | Clean and efficient",
-    image: "/images/rooms/standard.jpg",
+    images: [
+      "/images/rooms/StandardA-1.jpg",
+      "/images/rooms/StandardA-2.webp",
+      "/images/rooms/StandardB-1.webp",
+      "/images/rooms/StandardB-2.webp"
+    ],
   },
   {
     id: 2,
     roomName: "The Deluxe Room",
     details: "24 SQ | Ideal for longer stays",
-    image: "/images/rooms/deluxe.jpg",
+    images: ["/images/rooms/Deluxe A.webp", "/images/rooms/Deluxe B.webp"],
   },
   {
     id: 3,
     roomName: "The VIP Room",
     details: "Premium | Private, premium stays",
-    image: "/images/rooms/vip.jpeg",
+    images: ["/images/rooms/vip.jpeg", "/images/rooms/VIP 1-A.webp", "/images/rooms/VIP 1-B.webp", "/images/rooms/intro.jpeg"],
   },
 ];

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { GlobalProviders } from './global';
 import './globals.css';
 import { Hanken_Grotesk, Poppins } from 'next/font/google';
 import Footer from '@/src/components/Footer/Footer';
 import { Metadata } from 'next';
+import MetaPixel from '@/src/components/MetaPixel/MetaPixel';
 
 const hanken = Hanken_Grotesk({
   subsets: ['latin'],
@@ -86,6 +87,9 @@ export default function RootLayout({
     <html lang="en" className={`${hanken.variable} ${poppins.variable}`}>
       <body className="min-h-screen antialiased bg-white text-dark-silver">
         <GlobalProviders>
+          <Suspense fallback={null}>
+            <MetaPixel />
+          </Suspense>
           {children}
           <Footer />
         </GlobalProviders>

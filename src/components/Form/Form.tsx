@@ -31,7 +31,7 @@ const Form: React.FC<FormProps> = ({
 
   const isFooter = variant === 'footer';
   const containerClass = isFooter ? styles.formContainerFooter : styles.formContainer;
-  const buttonContent = isFooter ? 'Subscribe' : <ArrowUpRight size={20} strokeWidth={2} />;
+  const buttonContent = <ArrowUpRight size={20} strokeWidth={2} />;
   const buttonClass = isFooter ? styles.submitButtonFooter : styles.submitButton;
 
   return (

@@ -5,46 +5,46 @@ import Image from 'next/image';
 import styles from './spaces-section.module.css';
 import Eyebrow from '@/src/components/Eyebrow/Eyebrow';
 import FadeInSection from '@/src/components/FadeInSection/FadeInSection';
+import { spacesData } from '@/src/lib/spacesdata';
 
 export default function SpacesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const rightPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current || !trackRef.current) return;
+      if (!sectionRef.current || !trackRef.current || !rightPanelRef.current) return;
 
       const section = sectionRef.current;
       const track = trackRef.current;
+      const rightPanel = rightPanelRef.current;
       
       const sectionTop = section.getBoundingClientRect().top;
       const sectionHeight = section.offsetHeight;
       const windowHeight = window.innerHeight;
       
+      // Start scrolling when the section hits the top of the viewport
+      // End scrolling when the bottom of the section hits the bottom of the viewport
       const scrollDistance = -sectionTop;
       const maxScroll = sectionHeight - windowHeight;
       
-      let newProgress = scrollDistance / maxScroll;
+      let progress = scrollDistance / maxScroll;
+      progress = Math.max(0, Math.min(1, progress));
       
-      // Clamp between 0 and 1
-      newProgress = Math.max(0, Math.min(1, newProgress));
-      
-      // Apply transform
       const trackWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      // Adjust max translate to account for fixed content spacing if needed
-      // Here we just want the track to scroll fully
-      const maxTranslate = trackWidth - (viewportWidth - 600); // 600 is approx width of fixed content + gap
+      const rightPanelWidth = rightPanel.offsetWidth;
+      const maxTranslate = trackWidth - rightPanelWidth;
       
       if (maxTranslate > 0) {
-        const translateX = -newProgress * maxTranslate;
+        const translateX = -progress * maxTranslate;
         track.style.transform = `translateX(${translateX}px)`;
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleScroll);
+    // Initial call
     handleScroll();
 
     return () => {
@@ -55,79 +55,50 @@ export default function SpacesSection() {
 
   return (
     <section ref={sectionRef} className={styles.section}>
-      <FadeInSection className={styles.stickyContainer}>
+      <div className={styles.stickyWrapper}>
         
-        {/* Fixed Text Content */}
-        <div className={styles.fixedContent}>
-             <div className={styles.label}>LIFE AT BLIVE</div>
-             <h2 className={styles.heading}>
-                FEEL <br />
-                BELONG <br />
-                THRIVE
-             </h2>
+        {/* Left Panel - Text */}
+        <div className={styles.leftPanel}>
+          <div className={styles.textContent}>
+             <div className={styles.topContent}>
+                <div className={styles.eyebrowWrapper}>
+                    <Eyebrow className={styles.eyebrow}>LIFE AT BLIVE</Eyebrow>
+                </div>
+                <h2 className={styles.heading}>
+                    FEEL <br />
+                    BELONG <br />
+                    THRIVE
+                </h2>
+             </div>
              <div className={styles.description}>
                 <p>
                   Shared spaces, warm people, and routines that keep your days steady.
                   A home that helps you feel grounded while staying connected.
                 </p>
              </div>
-        </div>
-
-        {/* Scrolling Track */}
-        <div className={styles.trackWrapper}>
-          <div ref={trackRef} className={styles.horizontalTrack}>
-            
-            <div className={styles.imageBlock}>
-              <div className={styles.imageContainer}>
-                <Image
-                  src="/images/image (2) 1.jpg"
-                  alt="Swimming Pool"
-                  fill
-                  className={styles.image}
-                />
-              </div>
-              <Eyebrow className={styles.imageLabel}>SWIMMING POOL</Eyebrow>
-            </div>
-
-            <div className={styles.imageBlock}>
-              <div className={styles.imageContainer}>
-                <Image
-                  src="/images/image (7) 1.jpg"
-                  alt="Outdoor Bar"
-                  fill
-                  className={styles.image}
-                />
-              </div>
-              <Eyebrow className={styles.imageLabel}>OUTDOOR BAR</Eyebrow>
-            </div>
-
-            <div className={styles.imageBlock}>
-              <div className={styles.imageContainer}>
-                <Image
-                  src="/images/image (4) 1.jpg"
-                  alt="Community Pantry"
-                  fill
-                  className={styles.image}
-                />
-              </div>
-              <Eyebrow className={styles.imageLabel}>COMMUNITY PANTRY</Eyebrow>
-            </div>
-
-            <div className={styles.imageBlock}>
-              <div className={styles.imageContainer}>
-                <Image
-                  src="/images/image (6) 1.jpg"
-                  alt="Yoga Shala"
-                  fill
-                  className={styles.image}
-                />
-              </div>
-              <Eyebrow className={styles.imageLabel}>YOGA SHALA</Eyebrow>
-            </div>
-
           </div>
         </div>
-      </FadeInSection>
+
+        {/* Right Panel - Image Slider */}
+        <div className={styles.rightPanel} ref={rightPanelRef}>
+          <div ref={trackRef} className={styles.sliderTrack}>
+            {spacesData.map((space) => (
+              <div key={space.id} className={styles.imageBlock}>
+                <div className={styles.imageContainer}>
+                  <Image
+                    src={space.image}
+                    alt={space.name}
+                    fill
+                    className={styles.image}
+                  />
+                </div>
+                <p className={styles.imageLabel}>{space.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 }

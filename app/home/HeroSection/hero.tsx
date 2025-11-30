@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
 
         <div className={styles.actionTray}>
           <Form placeholder="JOIN NEWSLETTER FOR BLIVE" />
-          <Button variant="secondary" showArrow={false}>
+          <Button variant="secondary" showArrow={false} href="/go">
             Explore Go
           </Button>
         </div>

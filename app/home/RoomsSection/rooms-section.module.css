@@ -4,6 +4,7 @@
     position: relative;
     color: var(--white);
     overflow: hidden;
+    z-index: 2; /* Ensure it covers sticky RoomIntroSection */
   }
   
   .container {
@@ -34,7 +35,7 @@
   @media (min-width: 1024px) {
     .listColumn {
       width: 50%;
-      padding: 96px;
+      padding: clamp(40px, 5vw, 96px);
       height: 100vh;
     }
   }
@@ -45,18 +46,18 @@
   }
   
   .eyebrow {
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
   }
   
-  .mainTitle {
-    font-family: var(--font-display);
-    font-size: 64px;
-    line-height: 1.1;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    font-weight: 500;
-  }
+.mainTitle {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.1;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
   
   .titleRow {
     display: flex;
@@ -111,26 +112,27 @@
     background-color: var(--terracotta);
     opacity: 0.2;
     pointer-events: none;
-    z-index: 1;
+    z-index: 100; /* Ensure overlay is on top of images */
   }
   
   .imageContainer {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
   }
   
   .imageSlide {
       position: absolute;
       inset: 0;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      z-index: 0;
+      transform: translateY(100%);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+      background-color: var(--terracotta); /* Prevent see-through */
   }
   
-  .activeImage {
-      opacity: 1;
-      z-index: 1;
+  .visibleImage {
+      transform: translateY(0);
   }
   
   .roomImage {
@@ -144,7 +146,7 @@
     transform: translate(-50%, -50%);
     width: 150px;
     height: 150px;
-    z-index: 10;
+    z-index: 110; /* Above overlay */
     pointer-events: none;
   }
   
@@ -166,7 +168,7 @@
     
     .spinnerContainer {
         top: auto;
-        bottom: 20px;
+        bottom: 30%;
         left: 50%;
         transform: translateX(-50%);
     }

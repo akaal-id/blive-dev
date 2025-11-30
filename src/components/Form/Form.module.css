@@ -27,33 +27,32 @@
 }
 
 .submitButtonFooter {
-  background-color: var(--white);
-  color: var(--dark-blue);
+  background-color: transparent;
+  color: var(--cream);
   border: none;
-  padding: 12px 24px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
+  padding: 0;
   cursor: pointer;
   transition: opacity 0.2s;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .submitButtonFooter:hover {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 /* Standard variant */
 .formContainer {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   line-height: 100%;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   padding: 8px 8px 8px 24px;
   height: 44px;
   width: 100%;
-  min-width: 450px; /* Increased min-width to match image */
+  min-width: 300px; /* Reduced min-width for responsiveness */
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -111,17 +110,8 @@
   animation: fadeIn 0.5s ease forwards;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(2px);
+@media (max-width: 768px) {
+  .formContainer {
+    min-width: 100%;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fadeIn {
-  animation: fadeIn 0.5s ease forwards;
 }

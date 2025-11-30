@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './Button.module.css';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -39,6 +40,14 @@ const Button: React.FC<ButtonProps> = ({
   const buttonClass = `${styles.baseButton} ${variantClass} ${iconClass} ${className}`;
 
   if (href) {
+    const isInternal = href.startsWith('/');
+    if (isInternal) {
+      return (
+        <Link href={href} className={buttonClass}>
+          {content}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={buttonClass}>
         {content}

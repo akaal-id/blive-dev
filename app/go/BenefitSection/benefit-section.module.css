@@ -1,0 +1,135 @@
+.section {
+  padding: 96px 0 192px 96px;
+  background-color: var(--cream);
+  display: flex;
+  gap: 64px;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-right: 64px;
+}
+
+.eyebrow {
+  margin-bottom: 40px;
+  color: var(--deep-blue) !important;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--deep-blue);
+  margin-bottom: 32px;
+  line-height: 1.2;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--dark-silver);
+  opacity: 0.3;
+  margin-bottom: 32px;
+}
+
+.intro {
+  margin-bottom: 48px;
+}
+
+.intro p {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.intro p.bold {
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.benefitItem {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  padding: 24px 0;
+  border-top: 1px solid rgba(43, 44, 43, 0.3);
+}
+
+.benefitItem:last-child {
+  border-bottom: 1px solid rgba(43, 44, 43, 0.3);
+}
+
+.benefitTitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--dark-silver);
+}
+
+.benefitDesc {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--dark-silver);
+  line-height: 1.5;
+}
+
+.imageWrapper {
+  width: 40%;
+  min-width: 40%;
+  position: relative;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 64px 48px;
+    flex-direction: column;
+  }
+
+  .content {
+    padding-right: 0;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: 400px;
+    min-height: 400px;
+  }
+
+  .imageContainer {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 24px;
+  }
+
+  .benefitItem {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .heading {
+    font-size: 36px;
+  }
+}

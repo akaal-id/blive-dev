@@ -1,10 +1,17 @@
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 20px;
-  letter-spacing: 0.4em;
-  line-height: 100%;
+  font-size: 16px;
+  letter-spacing: 0.24em;
+  line-height: 150%;
   text-transform: uppercase;
   color: var(--cream);
   font-weight: 600;
 }
+
+.hero {
+  font-size: 20px;
+  letter-spacing: 0.4em;
+  line-height: 100%;
+}
+
 

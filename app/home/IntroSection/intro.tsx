@@ -1,11 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './intro.module.css';
+import FadeInSection from '@/src/components/FadeInSection/FadeInSection';
 
 export default function IntroSection() {
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
+      <FadeInSection className={styles.container}>
         {/* Centered Floating Image */}
         <div className={styles.floatingImageWrapper}>
              <Image 
@@ -55,7 +56,7 @@ export default function IntroSection() {
           {/* Main Background Image (Courtyard) */}
           <div className={styles.largeImageWrapper}>
             <Image 
-              src="/images/Enscape_2025-09-13-16-12-05_Scene 2 1.png" 
+              src="/images/intro1.jpg" 
               alt="BLive Courtyard" 
               fill
               className={styles.image}
@@ -63,7 +64,7 @@ export default function IntroSection() {
             />
           </div>
         </div>
-      </div>
+      </FadeInSection>
     </section>
   );
 }

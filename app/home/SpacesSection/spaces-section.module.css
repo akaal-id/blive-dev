@@ -1,0 +1,164 @@
+.section {
+  position: relative;
+  height: 400vh; /* Tall height to allow for scroll trigger */
+  background-color: var(--teal);
+  color: var(--deep-blue);
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-left: 96px; /* Left padding for fixed content */
+}
+
+/* Fixed Content Block (Text) */
+.fixedContent {
+  min-width: 400px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex-shrink: 0;
+  z-index: 10; /* Ensure text is above scroll track if overlapping occurs */
+  margin-right: 80px; /* Gap between fixed content and scrolling track */
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 80px; /* Large heading */
+  line-height: 1;
+  font-weight: 700;
+  color: var(--deep-blue);
+  text-transform: uppercase;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--deep-blue);
+}
+
+/* Scrolling Track Wrapper */
+.trackWrapper {
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.horizontalTrack {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 80px; /* Space between items */
+  width: max-content; /* Ensure track takes full width of content */
+  will-change: transform;
+  padding-right: 96px; /* Padding at end of scroll */
+}
+
+/* Image Blocks */
+.imageBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Gap between image and label */
+  height: 60vh; /* Fixed height relative to viewport */
+  width: auto;
+  flex-shrink: 0;
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 16/9; /* Landscape */
+  height: 100%;
+  overflow: hidden;
+}
+
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--teal);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.imageLabel {
+  color: var(--white); /* Or deep-blue depending on preference? Using white for contrast on teal */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section {
+    height: auto; /* Reset height */
+    padding: 96px 24px;
+  }
+
+  .stickyContainer {
+    position: static;
+    height: auto;
+    overflow: visible;
+    display: block;
+    padding-left: 0;
+  }
+
+  .fixedContent {
+    min-width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 64px;
+  }
+
+  .trackWrapper {
+    display: block;
+    height: auto;
+  }
+
+  .horizontalTrack {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 0;
+    transform: none !important; /* Disable JS transform on mobile */
+    width: 100%;
+  }
+
+  .heading {
+    font-size: 48px;
+  }
+
+  .imageBlock {
+    width: 100%;
+    height: auto;
+  }
+  
+  .imageContainer {
+    aspect-ratio: 16/9;
+    height: auto;
+    width: 100%;
+  }
+}

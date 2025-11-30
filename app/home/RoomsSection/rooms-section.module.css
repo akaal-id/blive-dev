@@ -1,0 +1,173 @@
+.section {
+    background-color: var(--terracotta);
+    height: 100vh; /* Force full height for pinning */
+    position: relative;
+    color: var(--white);
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      flex-direction: row;
+    }
+  }
+  
+  .listColumn {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically initially? */
+    overflow: hidden; /* Hide the scrolling parts */
+    position: relative;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 1024px) {
+    .listColumn {
+      width: 50%;
+      padding: 96px;
+      height: 100vh;
+    }
+  }
+  
+  .headerContent {
+    margin-bottom: 64px;
+    flex-shrink: 0;
+  }
+  
+  .eyebrow {
+    font-size: 16px;
+  }
+  
+  .mainTitle {
+    font-family: var(--font-display);
+    font-size: 64px;
+    line-height: 1.1;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+  }
+  
+  .titleRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .sunsetIcon {
+    width: 64px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .listWrapper {
+      height: auto; /* Allow height to be determined by content or fixed height */
+      overflow: hidden;
+      position: relative;
+      /* Masking to create fade effect at top/bottom if desired, or just hard crop */
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .imageColumn {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 1024px) {
+    .imageColumn {
+      width: 50%;
+      height: 100vh;
+      /* No sticky needed if parent is pinned */
+    }
+  }
+  
+  .imageWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .imageWrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--terracotta);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .imageSlide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+  }
+  
+  .activeImage {
+      opacity: 1;
+      z-index: 1;
+  }
+  
+  .roomImage {
+    object-fit: cover;
+  }
+  
+  .spinnerContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .rotatingText {
+    animation: rotate 20s linear infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Mobile Adjustments */
+  @media (max-width: 1024px) {
+    .mainTitle {
+      font-size: 48px;
+    }
+    
+    .spinnerContainer {
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+  }

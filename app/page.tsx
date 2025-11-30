@@ -3,6 +3,8 @@ import Hero from './home/HeroSection/hero';
 import IntroSection from './home/IntroSection/intro';
 import FlowLivingSection from './home/FlowLivingSection/flow-living';
 import RoomIntroSection from './home/RoomIntroSection/room-intro';
+import RoomsSection from './home/RoomsSection/rooms-section';
+import SpacesSection from './home/SpacesSection/spaces-section';
 
 export default function HomePage() {
   return (
@@ -11,6 +13,8 @@ export default function HomePage() {
       <IntroSection />
       <FlowLivingSection />
       <RoomIntroSection />
+      <RoomsSection />
+      <SpacesSection />
     </main>
   );
 }

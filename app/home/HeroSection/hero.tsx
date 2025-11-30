@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
         style={{ opacity: 0 }} // Start hidden for fade in
       >
         <Image
-          src="/icons/BLive Logo.png"
+          src="/icons/BLive Logo.svg"
           alt="BLive Logo"
           width={120} /* Adjust width as needed based on the actual image aspect ratio */
           height={40} /* Adjust height as needed */
@@ -96,13 +96,13 @@ const Hero: React.FC = () => {
             ref={emphasisRef}
             className={`${styles.headingEmphasis} text-white drop-shadow-sm`}
           >
-            WANTED
+            Wanted
           </h1>
           <div
             ref={eyebrowRef}
             className={styles.subcopy}
           >
-            <Eyebrow>Opening January 2026</Eyebrow>
+            <Eyebrow variant="hero">Opening January 2026</Eyebrow>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@ const Hero: React.FC = () => {
         </div>
 
         <div className={styles.actionTray}>
-          <Form placeholder="Join Newsletter" />
+          <Form placeholder="JOIN NEWSLETTER FOR BLIVE" />
           <Button variant="secondary" showArrow={false}>
             Explore Go
           </Button>

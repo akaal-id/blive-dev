@@ -1,3 +1,49 @@
+/* Footer Variant */
+.formContainerFooter {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White with opacity */
+  padding-bottom: 12px;
+  gap: 16px;
+}
+
+.inputFooter {
+  color: var(--white);
+  text-transform: none; /* Regular case for email input */
+  letter-spacing: normal;
+}
+
+.inputFooter::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.submitButtonFooter {
+  background-color: var(--white);
+  color: var(--dark-blue);
+  border: none;
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.submitButtonFooter:hover {
+  opacity: 0.9;
+}
+
+/* Standard variant */
 .formContainer {
   font-family: var(--font-sans);
   font-size: 16px;
@@ -7,8 +53,9 @@
   padding: 8px 8px 8px 24px;
   height: 44px;
   width: 100%;
-  max-width: 480px;
+  min-width: 450px; /* Increased min-width to match image */
   display: flex;
+  flex-grow: 1;
   align-items: center;
   justify-content: space-between;
   background-color: var(--teal);

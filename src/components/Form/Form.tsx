@@ -8,12 +8,14 @@ interface FormProps {
   placeholder?: string;
   onSubmit?: (e: React.FormEvent) => void;
   className?: string;
+  variant?: 'default' | 'footer';
 }
 
 const Form: React.FC<FormProps> = ({
   placeholder = 'Join Newsletter',
   onSubmit,
   className = '',
+  variant = 'default',
 }) => {
   const [status, setStatus] = useState<'idle' | 'success'>('idle');
   const [inputValue, setInputValue] = useState('');
@@ -25,19 +27,16 @@ const Form: React.FC<FormProps> = ({
     setInputValue(''); // Clear input on success
   };
 
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (status === 'success') {
-      timer = setTimeout(() => {
-        setStatus('idle');
-      }, 5000);
-    }
-    return () => clearTimeout(timer);
-  }, [status]);
+  // ... useEffect ...
+
+  const isFooter = variant === 'footer';
+  const containerClass = isFooter ? styles.formContainerFooter : styles.formContainer;
+  const buttonContent = isFooter ? 'Subscribe' : <ArrowUpRight size={20} strokeWidth={2} />;
+  const buttonClass = isFooter ? styles.submitButtonFooter : styles.submitButton;
 
   return (
     <form
-      className={`${styles.formContainer} ${className}`}
+      className={`${containerClass} ${className}`}
       onSubmit={status === 'idle' ? handleSubmit : (e) => e.preventDefault()}
     >
       {status === 'success' ? (
@@ -50,13 +49,13 @@ const Form: React.FC<FormProps> = ({
           <input
             type="email"
             placeholder={placeholder}
-            className={`${styles.input} ${styles.fadeIn}`}
+            className={`${styles.input} ${styles.fadeIn} ${isFooter ? styles.inputFooter : ''}`}
             required
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button type="submit" className={styles.submitButton}>
-            <ArrowUpRight size={20} strokeWidth={2} />
+          <button type="submit" className={buttonClass}>
+            {buttonContent}
           </button>
         </>
       )}

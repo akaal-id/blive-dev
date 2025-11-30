@@ -1,17 +1,16 @@
 .section {
   background-color: var(--cream);
-  padding: 96px 0 192px; /* Adjust based on design */
+  padding: 96px 96px 192px; /* Adjust based on design */
   color: var(--dark-silver);
   position: relative;
   overflow: hidden;
 }
 
 .container {
-  max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px;
-  display: grid;
-  grid-template-columns: 200px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
@@ -24,9 +23,10 @@
 
 .label {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.24em;
+  line-height: 150%;
   text-transform: uppercase;
   color: var(--deep-blue);
   position: relative;
@@ -36,7 +36,7 @@
 .contentColumn {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 40px;
 }
 
 .heading {
@@ -45,7 +45,6 @@
   line-height: 1.1;
   font-weight: 400;
   color: var(--deep-blue);
-  max-width: 800px;
 }
 
 .imageGrid {
@@ -62,10 +61,34 @@
   border-radius: 0px; /* Images in design look sharp or slightly rounded? sharp based on image */
 }
 
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--cream);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.imageActive {
+  z-index: 2;
+}
+
+.imageActive .image {
+  transform: scale(1.05);
+}
+
+.imageActive::after {
+  opacity: 0;
+}
+
 .image {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  transition: transform 0.5s ease;
 }
 
 .descriptionSection {
@@ -107,7 +130,8 @@
   cursor: default;
 }
 
-.featureItem:hover {
+.featureItem:hover,
+.featureActive {
   transform: translateX(12px);
   color: var(--terracotta);
 }

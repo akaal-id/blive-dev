@@ -1,13 +1,23 @@
 /* Root hero section with full-bleed background image */
 .heroRoot {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('/images/herobg.png');
+  background-image: url('/images/image (5) 1.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
+  z-index: 0; /* Ensure it stays under content if scrolling over */
+}
+
+.heroRoot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.4), transparent 50%);
+  pointer-events: none;
 }
 
 /* Overlay to hold all typography and controls */
@@ -16,8 +26,9 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Left align */
   justify-content: center;
+  padding-left: 96px; /* Left padding */
   pointer-events: none; /* allow underlying section to stay interactive if needed */
   transform: translateY(-4%);
 }
@@ -26,8 +37,8 @@
 .logoContainer {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 96px; /* Align with content */
+  transform: none; /* Remove centering transform */
   background-color: var(--terracotta);
   padding: 24px 48px; /* adjust padding as needed for visual balance */
   z-index: 10;
@@ -38,10 +49,11 @@
 .contentColumn {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start; /* Left align */
+  text-align: left; /* Left align text */
   gap: 0; /* gap removed as line heights are tight and visual spacing might be better controlled */
 }
+
 
 .headingPrimary {
   font-family: var(--font-display);
@@ -57,7 +69,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-size: 128px;
   line-height: 100%;
   margin-top: 0;
@@ -76,41 +88,61 @@
   right: 0;
   bottom: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3.2rem;
+  flex-direction: row; /* Changed to row for left/right split */
+  justify-content: space-between; /* Split content */
+  align-items: flex-end;
+  padding: 0 96px 3.2rem; /* Add horizontal padding matching other content */
   pointer-events: auto;
   gap: 24px;
-  width: 100%; /* Ensure container takes full width so centering works */
+  width: 100%;
 }
 
 .tagline {
   width: fit-content;
-  max-width: 100%; /* Allow it to shrink if screen is very small, but generally fit content */
+  max-width: 600px; /* Limit width for readability */
   font-family: var(--font-sans);
   font-weight: 600; /* semibold */
   font-size: 24px;
-  line-height: 100%;
+  line-height: 1.2; /* Better line height for multi-line */
   letter-spacing: -0.04em; /* -4% */
   color: var(--white);
-  text-align: center;
-  white-space: nowrap; /* Force one line */
+  text-align: left; /* Left align */
+  white-space: normal; /* Allow wrapping */
 }
 
 .actionTray {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  max-width: 900px; /* arbitrary constraint to keep them together */
-  padding: 0 24px;
+  justify-content: flex-end; /* Right align */
+  gap: 24px;
+  width: auto; /* Fit content */
+  padding: 0; /* Remove padding */
 }
 
 @media (max-width: 1024px) {
   .headingPrimary,
   .headingEmphasis {
     font-size: clamp(3rem, 10vw, 6rem);
+  }
+
+  .overlay {
+    padding-left: 48px;
+    align-items: flex-start;
+  }
+  
+  .logoContainer {
+    left: 48px;
+  }
+  
+  .bottomContainer {
+    padding: 0 48px 3.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .actionTray {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
 
@@ -120,21 +152,30 @@
   }
 
   .overlay {
-    padding: 0 1.5rem;
+    padding: 0 24px;
+    align-items: flex-start;
     transform: translateY(-2%);
+  }
+  
+  .logoContainer {
+    left: 24px;
+    padding: 16px 24px;
+  }
+
+  .bottomContainer {
+    padding: 0 24px 2rem;
+    gap: 24px;
   }
 
   .actionTray {
     flex-direction: column;
     gap: 12px;
-  }
-  
-  .logoContainer {
-    padding: 16px 24px;
+    width: 100%;
   }
   
   .tagline {
     white-space: normal; /* Allow wrapping on very small screens if needed, or keep nowrap if strict */
     font-size: 18px; /* Maybe scale down slightly on mobile */
+    max-width: 100%;
   }
 }

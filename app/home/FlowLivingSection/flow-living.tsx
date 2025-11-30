@@ -1,55 +1,24 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './flow-living.module.css';
+import FadeInSection from '@/src/components/FadeInSection/FadeInSection';
 
 export default function FlowLivingSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
+      <FadeInSection className={styles.container}>
         <div className={styles.labelColumn}>
-          <span className={styles.label}>Flow<br />Living</span>
+          <span className={styles.label}>Flow Living</span>
         </div>
 
         <div className={styles.contentColumn}>
           <h2 className={styles.heading}>
-            Made for People Who Work, Move, and Grow
+            Made for People Who <br/> <strong>Work, Move, and Grow</strong>
           </h2>
-
-          <div className={styles.imageGrid}>
-            {/* Using placeholders from public/images based on file listing */}
-            <div className={styles.imageContainer}>
-              <Image 
-                src="/images/image (2) 1.png" 
-                alt="Interior stairs" 
-                fill
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.imageContainer}>
-              <Image 
-                src="/images/image (3) 1.png" 
-                alt="Kitchen area" 
-                fill
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.imageContainer}>
-              <Image 
-                src="/images/image (4) 1.png" 
-                alt="Lounge area" 
-                fill
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.imageContainer}>
-              <Image 
-                src="/images/image (5) 1.png" 
-                alt="Community space" 
-                fill
-                className={styles.image}
-              />
-            </div>
-          </div>
 
           <div className={styles.descriptionSection}>
             <div className={styles.mainDescription}>
@@ -58,23 +27,91 @@ export default function FlowLivingSection() {
             </div>
           </div>
 
+          <div className={styles.imageGrid}>
+            {/* Using placeholders from public/images based on file listing */}
+            <div 
+              className={`${styles.imageContainer} ${hoveredIndex === 0 ? styles.imageActive : ''}`}
+              onMouseEnter={() => setHoveredIndex(0)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <Image 
+                src="/images/flow1.jpg" 
+                alt="Interior stairs" 
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div 
+              className={`${styles.imageContainer} ${hoveredIndex === 1 ? styles.imageActive : ''}`}
+              onMouseEnter={() => setHoveredIndex(1)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <Image 
+                src="/images/flow2.jpg" 
+                alt="Kitchen area" 
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div 
+              className={`${styles.imageContainer} ${hoveredIndex === 2 ? styles.imageActive : ''}`}
+              onMouseEnter={() => setHoveredIndex(2)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <Image 
+                src="/images/flow3.jpg" 
+                alt="Lounge area" 
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div 
+              className={`${styles.imageContainer} ${hoveredIndex === 3 ? styles.imageActive : ''}`}
+              onMouseEnter={() => setHoveredIndex(3)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <Image 
+                src="/images/flow4.jpg" 
+                alt="Community space" 
+                fill
+                className={styles.image}
+              />
+            </div>
+          </div>
+
           <div className={styles.featuresList}>
             <div className={styles.featureRow}>
-              <div className={styles.featureItem}>
+              <div 
+                className={`${styles.featureItem} ${hoveredIndex === 0 ? styles.featureActive : ''}`}
+                onMouseEnter={() => setHoveredIndex(0)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
                 <span className={styles.featureNumber}>01.</span>
                 Work and rest zones that feel natural
               </div>
-              <div className={styles.featureItem}>
+              <div 
+                className={`${styles.featureItem} ${hoveredIndex === 1 ? styles.featureActive : ''}`}
+                onMouseEnter={() => setHoveredIndex(1)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
                 <span className={styles.featureNumber}>02.</span>
                 Storage that keeps your space clean
               </div>
             </div>
             <div className={styles.featureRow}>
-              <div className={styles.featureItem}>
+              <div 
+                className={`${styles.featureItem} ${hoveredIndex === 2 ? styles.featureActive : ''}`}
+                onMouseEnter={() => setHoveredIndex(2)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
                 <span className={styles.featureNumber}>03.</span>
                 Sunlight that boosts energy
               </div>
-              <div className={styles.featureItem}>
+              <div 
+                className={`${styles.featureItem} ${hoveredIndex === 3 ? styles.featureActive : ''}`}
+                onMouseEnter={() => setHoveredIndex(3)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
                 <span className={styles.featureNumber}>04.</span>
                 Bathroom setups that fit fast, flexible days
               </div>
@@ -92,8 +129,7 @@ export default function FlowLivingSection() {
             </div>
           </div>
         </div>
-      </div>
+      </FadeInSection>
     </section>
   );
 }
-

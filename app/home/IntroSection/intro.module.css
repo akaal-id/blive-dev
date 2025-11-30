@@ -1,20 +1,18 @@
 .section {
   background-color: var(--cream);
-  padding-top: 192px;
   padding-bottom: 96px;
   color: var(--deep-blue);
   overflow: hidden;
   position: relative;
-  height: 1192px;
+  min-height: 100vh;
+  z-index: 1;
 }
 
 .container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 24px;
+  margin: 0 auto; 
   display: grid;
   grid-template-columns: 1fr 1fr; /* Text takes less space than image combo */
-  align-items: center;
+  align-items: start; /* Align start for sticky scrolling effect */
   position: relative; /* Added so absolute children relate to this container */
   height: 100%;
 }
@@ -29,17 +27,18 @@
   aspect-ratio: 3/4;
   z-index: 10; /* Ensure it's on top of everything */
   overflow: hidden;
-  /*box-shadow: 20px 20px 60px rgba(0,0,0,0.15); /* Enhanced shadow */
 }
 
 /* Left Content */
 .leftContent {
   display: flex;
-  padding: 0 48px 0 0;
+  padding: 192px 96px 0 96px; /* Added bottom padding for scroll clearance */
   flex-direction: column;
   height: 100%;
   width: 100%;
   justify-content: space-between;
+  position: sticky;
+  top: 192px; /* Sticky positioning below nav/hero offset */
 }
 
 .headerGroup {
@@ -52,10 +51,11 @@
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--deep-blue);
+  line-height: 150%;
 }
 
 .heading {
@@ -79,8 +79,9 @@
   display: inline-flex;
   align-items: center;
   position: relative;
-  width: 64px; /* Fixed width for the icon space */
-  height: 24px; /* Fixed height */
+  width: auto; /* Match sunset icon width approximately, or adjust as needed */
+  height: 54px;
+  min-height: 24px; 
 }
 
 .waveIcon {
@@ -121,20 +122,40 @@
 /* Right Images */
 .imageArea {
   position: relative;
-  height: 100%;
+  min-height: 100vh; /* ensure it scrolls */
   width: 100%;
   display: flex;
   align-items: center; 
 }
 
-.largeImageWrapper {
+.imageArea::after {
+  content: '';
   position: absolute;
-  top: 0;
+  inset: 0;
+  background-color: var(--cream);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.largeImageWrapper {
+  position: relative; /* Changed from absolute to relative so it takes up space */
   width: 100%;
-  height: 100%;
+  height: 120vh; /* Taller than viewport to allow scrolling */
   overflow: hidden;
   z-index: 1;
-  /* border-radius handling if needed */
+}
+
+.largeImageWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%; /* Overlay height */
+  background: linear-gradient(to top, var(--cream), transparent); /* Gradient to blank cream */
+  pointer-events: none;
+  z-index: 3;
 }
 
 .image {
@@ -148,31 +169,27 @@
     grid-template-columns: 1fr;
     gap: 80px;
     padding: 60px 24px;
-  }
-
-  .floatingImageWrapper {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: 60%;
-    margin: 40px auto;
-    z-index: 2;
+    align-items: center; /* Reset alignment for mobile */
   }
 
   .leftContent {
+    position: static; /* Disable sticky on mobile */
     padding: 0;
   }
-
+  
   .imageArea {
+    min-height: auto;
     height: 600px;
   }
 
   .largeImageWrapper {
-    right: 0;
+    position: relative;
     width: 100%;
-    position: relative; /* Stack it naturally on mobile? */
-    height: 400px;
+    height: 100%;
+  }
+  
+  .largeImageWrapper::after {
+    display: none; /* Optional: hide overlay on mobile if not needed */
   }
 }
 

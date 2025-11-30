@@ -6,6 +6,7 @@
   --cream: #FCE5DA;
   --teal: #88BFB4;
   --deep-blue: #256379;
+  --dark-blue: #0B1C3C; /* Added dark blue */
   --silver: #cec6c4;
   --dark-silver: #2B2C2B;
   --white: #FEFAF7;
@@ -20,6 +21,7 @@
   --color-cream: var(--cream);
   --color-teal: var(--teal);
   --color-deep-blue: var(--deep-blue);
+  --color-dark-blue: var(--dark-blue);
   --color-silver: var(--silver);
   --color-dark-silver: var(--dark-silver);
   --color-white: var(--white);

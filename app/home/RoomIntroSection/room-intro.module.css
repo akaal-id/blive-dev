@@ -1,84 +1,71 @@
 .section {
-  background-color: var(--terracotta);
-  color: var(--white);
-  padding: 192px 0 96px;
-  min-height: 100vh;
-}
-
-.container {
-  max-width: 1440px;
   width: 100%;
-  margin: 0 auto;
-  display: flex;
-  gap: 40px;
-  padding: 0 24px;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--cream);
+  color: var(--terracotta);
 }
 
-.leftColumn {
-  width: 200px;
-  flex-shrink: 0;
+.splitLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Left Column */
+.textContent {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px; /* Spacing between header group and details */
+  background-color: var(--cream);
+}
+
+.headerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .label {
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
   text-transform: uppercase;
-  color: var(--cream);
-  position: relative;
-  top: 40px;
-}
-
-.mainContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.imageContainer {
-  width: 100%;
-  height: 500px;
-  position: relative;
-  overflow: hidden;
-}
-
-.image {
-  object-fit: cover;
-}
-
-.contentGrid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  color: var(--terracotta);
 }
 
 .heading {
   font-family: var(--font-display);
-  font-size: 64px; /* Adjust based on visual hierarchy */
+  font-size: 64px;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  color: var(--terracotta);
 }
 
-.heading strong {
+.highlight {
   font-weight: 700;
+  color: var(--terracotta); /* Ensure it matches or stands out if needed */
 }
 
-.infoColumn {
+.details {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding-top: 1rem; /* Align visually with heading text */
+  gap: 40px;
+  max-width: 500px;
 }
 
 .description {
   font-family: var(--font-sans);
-  font-size: 1.25rem;
+  font-size: 20px;
   line-height: 1.5;
-  max-width: 400px;
+  font-weight: 500;
+  color: var(--terracotta);
 }
 
 .featuresList {
@@ -86,56 +73,65 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .featureItem {
   font-family: var(--font-sans);
-  font-size: 1rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--white);
-  transition: padding-left 0.3s ease, color 0.3s ease;
-  cursor: default;
+  font-size: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(198, 86, 54, 0.3); /* Semi-transparent terracotta */
+  color: var(--terracotta);
+  font-weight: 400;
+}
+.featureItem:first-child {
+  border-top: 1px solid rgba(198, 86, 54, 0.3);
 }
 
-.featureItem:hover {
-  padding-left: 12px;
-  color: var(--cream);
+/* Right Column */
+.imageContent {
+  background-color: var(--terracotta);
+  padding: 60px; /* Frame padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Fill viewport height */
+  position: sticky;
+  top: 0;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Optional: adds a subtle shadow or border if needed to match exact look */
+}
+
+.image {
+  object-fit: cover;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .section {
-    padding: 2rem;
-  }
-
-  .leftColumn {
-    width: 100%;
-    padding-top: 0;
-  }
-
-  .label {
-    position: static;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .contentGrid {
+  .splitLayout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    height: auto;
+  }
+
+  .textContent {
+    padding: 40px 24px;
+    gap: 40px;
+    height: auto;
+    min-height: auto;
   }
 
   .heading {
-    font-size: 3rem;
+    font-size: 40px;
   }
 
-  .imageContainer {
-    height: 300px;
+  .imageContent {
+    height: 500px;
+    padding: 24px;
+    position: relative;
   }
 }

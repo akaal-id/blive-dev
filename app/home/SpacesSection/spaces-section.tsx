@@ -80,7 +80,7 @@ export default function SpacesSection() {
             <div className={styles.imageBlock}>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/image (2) 1.png"
+                  src="/images/image (2) 1.jpg"
                   alt="Swimming Pool"
                   fill
                   className={styles.image}
@@ -92,7 +92,7 @@ export default function SpacesSection() {
             <div className={styles.imageBlock}>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/image (7) 1.png"
+                  src="/images/image (7) 1.jpg"
                   alt="Outdoor Bar"
                   fill
                   className={styles.image}
@@ -104,7 +104,7 @@ export default function SpacesSection() {
             <div className={styles.imageBlock}>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/image (4) 1.png"
+                  src="/images/image (4) 1.jpg"
                   alt="Community Pantry"
                   fill
                   className={styles.image}
@@ -116,7 +116,7 @@ export default function SpacesSection() {
             <div className={styles.imageBlock}>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/image (6) 1.png"
+                  src="/images/image (6) 1.jpg"
                   alt="Yoga Shala"
                   fill
                   className={styles.image}

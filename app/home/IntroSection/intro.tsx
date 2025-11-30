@@ -10,7 +10,7 @@ export default function IntroSection() {
         {/* Centered Floating Image */}
         <div className={styles.floatingImageWrapper}>
              <Image 
-              src="/images/image (6) 1.png" 
+              src="/images/image (6) 1.jpg" 
               alt="Yoga flow" 
               fill
               className={styles.image}

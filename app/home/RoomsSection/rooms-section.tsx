@@ -15,8 +15,6 @@ gsap.registerPlugin(ScrollTrigger);
 const RoomsSection = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
-  const listWrapperRef = useRef<HTMLDivElement>(null);
 
   // Flatten all images to create a sequence of slides
   const slides = useMemo(() => {
@@ -32,19 +30,9 @@ const RoomsSection = () => {
   }, []);
 
   const activeRoomIndex = slides[currentSlideIndex]?.roomIndex ?? 0;
+  const activeRoom = roomData[activeRoomIndex];
 
   useGSAP(() => {
-    if (!listRef.current || !listWrapperRef.current || listRef.current.children.length === 0) return;
-
-    const list = listRef.current;
-    const wrapper = listWrapperRef.current;
-    
-    // Get the height of a single item
-    const itemHeight = (list.children[0] as HTMLElement).offsetHeight;
-    
-    // Set wrapper height to match exactly one item
-    gsap.set(wrapper, { height: itemHeight });
-
     // Create a timeline for the scrolling
     gsap.timeline({
         scrollTrigger: {
@@ -66,19 +54,6 @@ const RoomsSection = () => {
 
   }, { scope: containerRef, dependencies: [slides] });
 
-  // Effect to animate the list position when the active room changes
-  useGSAP(() => {
-    if (!listRef.current) return;
-    const list = listRef.current;
-    const itemHeight = (list.children[0] as HTMLElement)?.offsetHeight || 0;
-    
-    gsap.to(list, {
-      y: -(activeRoomIndex * itemHeight),
-      duration: 0.5,
-      ease: "power2.out"
-    });
-  }, { dependencies: [activeRoomIndex] });
-
   return (
     <section className={styles.section} ref={containerRef}>
       <div className={styles.container}>
@@ -89,31 +64,16 @@ const RoomsSection = () => {
               <span>For Everyday</span>
               <div className={styles.titleRow}>
                 <span><strong>LIVING</strong></span>
-                <Image 
-                  src="/icons/sunset.png" 
-                  alt="Sunset Icon" 
-                  width={64} 
-                  height={64} 
-                  className={styles.sunsetIcon}
-                />
               </div>
             </div>
           </div>
 
-          <div className={styles.listWrapper} ref={listWrapperRef}>
-            <div className={styles.list} ref={listRef}>
-                {roomData.map((room, index) => (
-                <div key={room.id}>
-                    <RoomCard 
-                        room={room} 
-                        isActive={index === activeRoomIndex}
-                        onClick={() => {
-                           // Optional: Scroll to start of this room?
-                        }}
-                    />
-                </div>
-                ))}
-            </div>
+          <div className={styles.activeRoomWrapper}>
+              <RoomCard 
+                  key={activeRoom.id}
+                  room={activeRoom} 
+                  isActive={true}
+              />
           </div>
         </div>
 

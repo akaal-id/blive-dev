@@ -25,10 +25,8 @@ const Footer: React.FC = () => {
           </div>
           
           <address className={styles.address}>
-            Jl. Uma Buluh, Canggu,
-            Kec. Kuta Utara<br />
-            Kabupaten Badung,
-            Bali 80361
+            Jl. Nelayan No.24, Canggu, Kec. Kuta Utara, <br />
+            Kabupaten Badung, Bali 80361
           </address>
 
           <div className={styles.formWrapper}>
@@ -51,9 +49,9 @@ const Footer: React.FC = () => {
             <div className={styles.linksGroup}>
                 <h4 className={styles.columnTitle}>Contact Us</h4>
                 <div className={styles.contactList}>
-                    <Link href="https://instagram.com/blive.id" target="_blank" className={styles.contactItem}>
+                    <Link href="https://instagram.com/blive.bali" target="_blank" className={styles.contactItem}>
                         <Instagram size={18} />
-                        <span>blive.id</span>
+                        <span>blive.bali</span>
                     </Link>
                     <Link href="mailto:hello@blive.id" className={styles.contactItem}>
                         <Mail size={18} />
@@ -67,12 +65,7 @@ const Footer: React.FC = () => {
       {/* Bottom Section */}
       <div className={styles.bottomSection}>
         <div className={styles.copyright}>
-          ©2025. All right reserved.
-        </div>
-        <div className={styles.legalLinks}>
-             <Link href="#" className={styles.legalLink}>Privacy Policy</Link>
-             <Link href="#" className={styles.legalLink}>Terms of Service</Link>
-             <Link href="#" className={styles.legalLink}>Cookies Settings</Link>
+          2025 © BLive Bali. All Rights Reserverd.
         </div>
       </div>
     </footer>
@@ -80,4 +73,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-

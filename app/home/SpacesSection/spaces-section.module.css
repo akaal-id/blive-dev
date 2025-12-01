@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  height: 300vh; /* Adjust based on how much scroll distance you want */
+  height: 500vh; /* Increased scroll distance to slow down animation */
   width: 100%;
   z-index: 2;
 }

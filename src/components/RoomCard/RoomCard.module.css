@@ -1,7 +1,7 @@
 .card {
   width: 100%;
   padding: 24px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.4); */
   cursor: pointer;
   transition: opacity 0.3s ease;
   opacity: 0.75;
@@ -52,7 +52,12 @@
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    gap: 16px;
+    gap: 8px; /* Reduced gap */
+    align-items: flex-start; /* Align left */
+  }
+
+  .card{
+    padding: 16px 0;
   }
 
   .roomName {
@@ -61,5 +66,12 @@
   
   .roomDetails {
     font-size: 14px;
+    white-space: normal; /* Allow wrapping on mobile */
+    flex-wrap: wrap; /* Wrap details if needed */
+    margin-top: 4px; /* Add spacing between title and details */
+  }
+
+  .detailsContainer {
+    width: 100%; /* Ensure it takes full width */
   }
 }

@@ -231,6 +231,16 @@
     flex-direction: column;
     width: 100%;
     gap: 16px;
-    padding: 24px;
+    padding: 24px 24px 64px 24px;
   }
+}
+
+/* Custom dark blue primary button */
+.goButtonDarkBlue {
+  background-color: var(--deep-blue) !important;
+}
+
+.goButtonDarkBlue .iconContainer {
+  background-color: var(--cream);
+  color: var(--deep-blue);
 }

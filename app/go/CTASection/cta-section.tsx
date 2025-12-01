@@ -13,6 +13,7 @@ export default function CTASection() {
         fill
         className={styles.bgImage}
         sizes="100vw"
+        unoptimized
       />
       <div className={styles.overlay} />
       

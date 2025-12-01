@@ -59,6 +59,7 @@ export default function BenefitSection() {
             fill
             className={styles.image}
             sizes="(max-width: 1024px) 100vw, 40vw"
+            unoptimized
           />
         </div>
       </FadeInSection>

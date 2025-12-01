@@ -56,6 +56,7 @@ export default function AboutSection() {
           fill
           className={styles.image}
           sizes="100vw"
+          unoptimized
         />
       </FadeInSection>
     </section>

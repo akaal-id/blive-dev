@@ -41,6 +41,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex; /* Default row for desktop */
 }
 
 .roomImage {
@@ -75,7 +76,7 @@
 .cardDetailsBar {
   background-color: var(--terracotta); /* Bottom bar color from image */
   color: var(--white);
-  padding: 40px 64px 64px 64px; /* Adjusted padding */
+  padding: 40px 64px 96px 64px; /* Adjusted padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,7 +96,7 @@
 .eyebrowLine1,
 .eyebrowLine2 {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   letter-spacing: 0.2em;
   font-weight: 700;
   text-transform: uppercase;
@@ -111,7 +112,7 @@
 
 .roomName {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: clamp(24px, 4vw, 32px);
   font-weight: 500;
   color: var(--white);
   margin: 0;
@@ -129,7 +130,7 @@
 
 .roomSpecs {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   letter-spacing: 0.1em;
   font-weight: 400;
   color: var(--white);
@@ -139,7 +140,7 @@
 
 .separator {
   margin: 0 12px;
-  opacity: 0.6;
+  opacity: 0;
 }
 
 .navigationControls {
@@ -179,41 +180,60 @@
 
   .cardImagesWrapper {
     flex-direction: column;
-    height: auto;
+    height: 500px; /* Fixed height for mobile */
     flex: none; /* Reset flex */
+  }
+
+  .imageMotionWrapper {
+    flex-direction: column;
   }
 
   .leftImageArea,
   .rightImageArea {
     width: 100%;
-    height: 300px;
+    height: 50%; /* Split the fixed height */
   }
 
   .cardDetailsBar {
     flex-direction: column;
-    padding: 32px 24px;
-    gap: 32px;
-    align-items: flex-start;
+    padding: 32px 24px 60px 24px; /* Added 60px bottom padding */
+    gap: 24px;
+    align-items: center; /* Centralize */
     height: auto;
+    text-align: center;
   }
 
-  .detailsLeft, .detailsMiddle, .detailsRight {
+  /* Reorder Layout: Nav -> Eyebrow -> Name -> Specs */
+  
+  .detailsRight {
+    display: contents; /* Unwrap children to participate in grid/flex of parent */
+  }
+
+  .navigationControls {
+    order: 1;
     width: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center; /* Centralize */
+    gap: 12px; /* Ensure 12px gap */
+    margin-bottom: 8px;
+  }
+
+  .detailsLeft {
+    order: 2;
+    width: 100%;
+    justify-content: center; /* Centralize */
+    align-items: center; /* Centralize */
   }
   
   .detailsMiddle {
-    order: -1; /* Name on top for mobile */
+    order: 3;
+    width: 100%;
+    justify-content: center; /* Centralize */
+    align-items: center; /* Centralize */
   }
 
-  .detailsRight {
-    flex-direction: column;
-    gap: 24px;
-  }
-  
-  .navigationControls {
+  .roomSpecs {
+    order: 4;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center; /* Centralize */
   }
 }

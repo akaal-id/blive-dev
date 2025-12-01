@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
       {/* Bottom Section */}
       <div className={styles.bottomSection}>
         <div className={styles.copyright}>
-          2025 © BLive Bali. All Rights Reserverd.
+          2025 © BLive Bali. All Rights Reserved.
         </div>
       </div>
     </footer>

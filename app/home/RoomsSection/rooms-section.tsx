@@ -24,12 +24,28 @@ const RoomsSection = () => {
     setCurrentRoomIndex((prev) => (prev - 1 + roomData.length) % roomData.length);
   };
 
-  // Ensure we have at least 2 images to show side-by-side
+    // Ensure we have at least 2 images to show side-by-side
   const leftImage = activeRoom.images[0];
   const rightImage = activeRoom.images[1] || activeRoom.images[0];
 
   // Variants for image sliding
-  const slideVariants = {
+  const imageSlideVariants = {
+    enter: (direction: 'left' | 'right') => ({
+      x: direction === 'right' ? '100%' : '-100%',
+      opacity: 1,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: 'left' | 'right') => ({
+      x: direction === 'right' ? '-100%' : '100%',
+      opacity: 1,
+    }),
+  };
+
+  // Variants for text sliding (with fade)
+  const textSlideVariants = {
     enter: (direction: 'left' | 'right') => ({
       x: direction === 'right' ? '100%' : '-100%',
       opacity: 0,
@@ -44,31 +60,34 @@ const RoomsSection = () => {
     }),
   };
 
-  // Variants for text fading
-  const fadeVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -10 },
+  const transitionSettings: any = {
+    duration: 0.6,
+    ease: [0.16, 1, 0.3, 1], // Ease-out expo-ish
+  };
+
+  const textTransitionSettings: any = {
+    duration: 0.4, // Slightly faster for text
+    ease: "easeInOut",
   };
 
   return (
     <section className={styles.section}>
         {/* Room Card Container */}
         <div className={styles.roomCardContainer}>
-            {/* Top: Images (Split) */}
+            {/* Top: Images (Split) - Animated as a whole container */}
             <div className={styles.cardImagesWrapper}>
-                <div className={styles.leftImageArea}>
-                    <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                        <motion.div
-                            key={`left-${activeRoom.id}`}
-                            custom={direction}
-                            variants={slideVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} // Ease-out expo-ish
-                            className={styles.imageMotionWrapper}
-                        >
+                <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                    <motion.div
+                        key={activeRoom.id}
+                        custom={direction}
+                        variants={imageSlideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={transitionSettings}
+                        className={styles.imageMotionWrapper}
+                    >
+                        <div className={styles.leftImageArea}>
                             <Image
                                 src={leftImage}
                                 alt={`${activeRoom.roomName} View 1`}
@@ -76,21 +95,8 @@ const RoomsSection = () => {
                                 className={styles.roomImage}
                                 priority
                             />
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-                <div className={styles.rightImageArea}>
-                    <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                        <motion.div
-                            key={`right-${activeRoom.id}`}
-                            custom={direction}
-                            variants={slideVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                            className={styles.imageMotionWrapper}
-                        >
+                        </div>
+                        <div className={styles.rightImageArea}>
                             <Image
                                 src={rightImage}
                                 alt={`${activeRoom.roomName} View 2`}
@@ -98,11 +104,11 @@ const RoomsSection = () => {
                                 className={styles.roomImage}
                                 priority
                             />
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
 
-                {/* Floating Spinner in Center */}
+                {/* Floating Spinner in Center - Static overlay */}
                 <div className={styles.spinnerContainer}>
                     <svg viewBox="0 0 100 100" width="120" height="120" className={styles.rotatingText}>
                         <defs>
@@ -125,35 +131,39 @@ const RoomsSection = () => {
                 </div>
 
                 <div className={styles.detailsMiddle}>
-                    <AnimatePresence mode="wait">
-                        <motion.h3 
-                            key={activeRoom.roomName}
-                            className={styles.roomName}
-                            variants={fadeVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                            {activeRoom.roomName}
-                        </motion.h3>
-                    </AnimatePresence>
+                    <div style={{ overflow: 'hidden', position: 'relative' }}>
+                        <AnimatePresence mode="wait" custom={direction}>
+                            <motion.h3 
+                                key={activeRoom.roomName}
+                                className={styles.roomName}
+                                custom={direction}
+                                variants={textSlideVariants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                transition={textTransitionSettings}
+                            >
+                                {activeRoom.roomName}
+                            </motion.h3>
+                        </AnimatePresence>
+                    </div>
                 </div>
 
                 <div className={styles.detailsRight}>
-                    <div className={styles.roomSpecs}>
-                        <AnimatePresence mode="wait">
+                    <div className={styles.roomSpecs} style={{ overflow: 'hidden', position: 'relative' }}>
+                        <AnimatePresence mode="wait" custom={direction}>
                             <motion.div
                                 key={activeRoom.id}
-                                variants={fadeVariants}
-                                initial="hidden"
-                                animate="visible"
+                                custom={direction}
+                                variants={textSlideVariants}
+                                initial="enter"
+                                animate="center"
                                 exit="exit"
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                transition={textTransitionSettings}
                                 style={{ display: 'flex', alignItems: 'center' }}
                             >
                                 <span>{size ? size.trim() : ''}</span>
-                                <span className={styles.separator}>|</span>
+                                
                                 <span>{description ? description.trim() : ''}</span>
                             </motion.div>
                         </AnimatePresence>

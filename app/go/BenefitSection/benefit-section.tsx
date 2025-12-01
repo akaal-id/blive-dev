@@ -58,6 +58,7 @@ export default function BenefitSection() {
             alt="G.O Benefits Environment"
             fill
             className={styles.image}
+            sizes="(max-width: 1024px) 100vw, 40vw"
           />
         </div>
       </FadeInSection>

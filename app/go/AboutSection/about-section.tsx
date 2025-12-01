@@ -55,6 +55,7 @@ export default function AboutSection() {
           alt="Community Common Space"
           fill
           className={styles.image}
+          sizes="100vw"
         />
       </FadeInSection>
     </section>

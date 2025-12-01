@@ -3,7 +3,7 @@ import { GlobalProviders } from './global';
 import './globals.css';
 import { Hanken_Grotesk, Poppins } from 'next/font/google';
 import Footer from '@/src/components/Footer/Footer';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import MetaPixel from '@/src/components/MetaPixel/MetaPixel';
 
 const hanken = Hanken_Grotesk({
@@ -71,11 +71,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

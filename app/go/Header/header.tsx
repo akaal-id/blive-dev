@@ -11,6 +11,7 @@ export default function Header() {
         fill
         className={styles.bgImage}
         priority
+        sizes="100vw"
       />
       <div className={styles.overlay} />
       

@@ -42,6 +42,67 @@
   opacity: 0.7;
 }
 
+/* Hero Variant */
+.formContainerHero {
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 1.5vw, 16px);
+  line-height: 100%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 8px 8px 24px;
+  height: 44px;
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: 1px solid var(--cream);
+  border-radius: 0;
+  color: var(--cream);
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.inputHero {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cream);
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: 0.1em;
+  text-transform: inherit;
+  width: 100%;
+  padding: 0;
+}
+
+.inputHero::placeholder {
+  color: rgba(252, 229, 218, 0.7);
+  letter-spacing: 0.2em;
+  transition: opacity 0.3s ease;
+}
+
+.submitButtonHero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  color: var(--deep-blue); /* Dark blue arrow */
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitButtonHero:hover {
+  opacity: 0.7;
+}
+
+
 /* Standard variant */
 .formContainer {
   font-family: var(--font-sans);
@@ -111,7 +172,7 @@
 }
 
 @media (max-width: 768px) {
-  .formContainer {
+  .formContainer, .formContainerHero {
     min-width: 100%;
   }
 }

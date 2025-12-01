@@ -8,7 +8,7 @@ interface FormProps {
   placeholder?: string;
   onSubmit?: (e: React.FormEvent) => void;
   className?: string;
-  variant?: 'default' | 'footer';
+  variant?: 'default' | 'footer' | 'hero';
 }
 
 const Form: React.FC<FormProps> = ({
@@ -30,9 +30,21 @@ const Form: React.FC<FormProps> = ({
   // ... useEffect ...
 
   const isFooter = variant === 'footer';
-  const containerClass = isFooter ? styles.formContainerFooter : styles.formContainer;
+  const isHero = variant === 'hero';
+  
+  let containerClass = styles.formContainer;
+  if (isFooter) containerClass = styles.formContainerFooter;
+  if (isHero) containerClass = styles.formContainerHero;
+
   const buttonContent = <ArrowUpRight size={20} strokeWidth={2} />;
-  const buttonClass = isFooter ? styles.submitButtonFooter : styles.submitButton;
+  
+  let buttonClass = styles.submitButton;
+  if (isFooter) buttonClass = styles.submitButtonFooter;
+  if (isHero) buttonClass = styles.submitButtonHero;
+
+  let inputClass = styles.input;
+  if (isFooter) inputClass = styles.inputFooter;
+  if (isHero) inputClass = styles.inputHero;
 
   return (
     <form
@@ -49,7 +61,7 @@ const Form: React.FC<FormProps> = ({
           <input
             type="email"
             placeholder={placeholder}
-            className={`${styles.input} ${styles.fadeIn} ${isFooter ? styles.inputFooter : ''}`}
+            className={`${inputClass} ${styles.fadeIn}`}
             required
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}

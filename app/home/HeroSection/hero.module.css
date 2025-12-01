@@ -4,22 +4,32 @@
   top: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('/images/newhero.jpg');
+  background-image: linear-gradient(to bottom, rgba(252, 229, 218, 0.1) 0%, rgba(252, 229, 218, 0.1) 50%, rgba(252, 229, 218, 0.1) 50%), url('/images/newhero.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
-  z-index: 0; /* Ensure it stays under content if scrolling over */
+  z-index: 0;
 }
 
 .heroRoot::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: var(--cream); /* Changed from gradient to solid color for overlay */
-  opacity: 0.1; /* 10% opacity */
+  background-color: var(--cream);
+  opacity: 0.1;
   pointer-events: none;
-  z-index: 1; /* Ensure it's above the image */
+  z-index: 1;
+}
+
+/* Transition Overlay (Cream) */
+.transitionOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--cream);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
 }
 
 /* Overlay to hold all typography and controls */
@@ -28,120 +38,155 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Left align */
+  align-items: center; /* Center align */
   justify-content: center;
-  padding-left: clamp(24px, 5vw, 96px); /* Left padding */
-  pointer-events: none; /* allow underlying section to stay interactive if needed */
-  transform: translateY(-4%);
+  pointer-events: none;
+  transform: translateY(-5%); /* Slight offset to account for bottom bar */
 }
 
-/* Logo Container */
+/* Logo Container - Top Left */
 .logoContainer {
   position: absolute;
-  top: 0;
-  left: clamp(24px, 5vw, 96px); /* Align with content */
-  transform: none; /* Remove centering transform */
-  background-color: var(--terracotta);
-  padding: 16px 32px; /* adjust padding as needed for visual balance */
+  top: 48px;
+  left: 48px;
   z-index: 10;
   pointer-events: auto;
 }
 
-/* Container that keeps the main heading column aligned */
+/* Content Column */
 .contentColumn {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Left align */
-  text-align: left; /* Left align text */
-  gap: 0; /* gap removed as line heights are tight and visual spacing might be better controlled */
+  align-items: center;
+  text-align: center;
 }
 
+.headingGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align tops of text */
+  justify-content: center;
+  gap: 12px;
+}
+
+.headingLeft {
+  display: flex;
+  align-items: center;
+}
+
+.headingRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center underline relative to WANTED */
+  position: relative;
+}
+
+.headingPrimary,
+.headingEmphasis {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 64px;
+  line-height: 1; /* Tight line height */
+  margin: 0;
+  overflow: hidden;
+  color: var(--white);
+}
 
 .headingPrimary {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  text-transform: none;
-  font-size: clamp(64px, 10vw, 128px);
-  line-height: 120%;
-  overflow: hidden; /* Required for the translateY animation */
+  text-transform: uppercase;
 }
 
 .headingEmphasis {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  /*text-transform: uppercase;*/
-  font-size: clamp(64px, 10vw, 128px);
-  line-height: 100%;
-  margin-top: 0;
-  overflow: hidden; /* Required for the translateY animation */
+  text-transform: uppercase;
 }
 
-.subcopy {
-  margin-top: 0.9rem;
-  overflow: hidden; /* Required for the translateY animation */
+.underlineWrapper {
+  position: relative;
+  margin-top: -40px; /* Pull up closer to text */
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
+.underline {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  /* Apply Terracotta Filter */
+  filter: brightness(0) saturate(100%) invert(53%) sepia(27%) saturate(1831%) hue-rotate(325deg) brightness(85%) contrast(87%);
+}
+
 
 /* Bottom container area */
 .bottomContainer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 48px;
   display: flex;
-  flex-direction: row; /* Changed to row for left/right split */
-  justify-content: space-between; /* Split content */
-  align-items: flex-end;
-  padding: 0 96px 3.2rem; /* Add horizontal padding matching other content */
+  flex-direction: row; /* Split Left and Right */
+  align-items: flex-end; /* Align bottom */
+  justify-content: space-between; /* Push to edges */
+  padding: 0;
   pointer-events: auto;
   gap: 24px;
   width: 100%;
+  z-index: 10;
+  padding: 0 48px;
 }
 
 .tagline {
-  width: fit-content;
-  max-width: 600px; /* Limit width for readability */
+  width: 100%;
+  max-width: 600px;
   font-family: var(--font-sans);
   font-weight: 600; /* semibold */
-  font-size: clamp(16px, 2.5vw, 24px);
-  line-height: 1.2; /* Better line height for multi-line */
-  letter-spacing: -0.04em; /* -4% */
-  color: var(--white);
+  font-size: 24px;
+  line-height: 1.2;
   text-align: left; /* Left align */
-  white-space: normal; /* Allow wrapping */
+  color: var(--white); /* Match logo left padding */
+  margin-bottom: 12px; /* Align visually with content in box */
 }
 
 .actionTray {
+  background-color: var(--teal);
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end; /* Right align */
+  justify-content: center;
   gap: 24px;
-  width: auto; /* Fit content */
-  padding: 0; /* Remove padding */
+  width: auto; /* Fit content or specific width */
+  min-width: 800px;
+  padding: 24px 24px; /* Generous padding */
 }
 
+/* Mobile Styles */
 @media (max-width: 1024px) {
-  /* Fonts are now clamped in main classes */
-
-  .overlay {
-    padding-left: 48px;
-    align-items: flex-start;
-  }
-  
-  .logoContainer {
-    left: 48px;
+  .headingPrimary,
+  .headingEmphasis {
+    font-size: clamp(48px, 8vw, 64px);
   }
   
   .bottomContainer {
-    padding: 0 48px 3.2rem;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    padding: 0 24px 48px;
+  }
+  
+  .tagline {
+    text-align: center;
+    padding-left: 0;
+    max-width: 600px;
   }
   
   .actionTray {
     width: 100%;
-    justify-content: flex-start;
+    min-width: auto;
+    padding: 24px;
+  }
+  
+  .logoContainer {
+    left: 24px; /* Smaller padding on mobile */
   }
 }
 
@@ -150,31 +195,42 @@
     height: 100vh;
   }
 
-  .overlay {
-    padding: 0 24px;
-    align-items: flex-start;
-    transform: translateY(-2%);
+  .logoContainer {
+    top: 32px;
+    left: 24px;
+    width: 150px; /* Smaller logo on mobile */
+    transform: none;
+  }
+
+  .headingGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
   
-  .logoContainer {
-    left: 24px;
-    padding: 16px 24px;
+  .headingRight {
+    width: 100%;
+  }
+
+  .underlineWrapper {
+    margin-top: -5px;
   }
 
   .bottomContainer {
-    padding: 0 24px 2rem;
-    gap: 24px;
+    bottom: 0; /* Sit on bottom */
+    gap: 32px;
+    padding: 0 0 32px;
+  }
+
+  .tagline {
+    font-size: 18px;
+    padding: 0 24px;
   }
 
   .actionTray {
     flex-direction: column;
-    gap: 12px;
     width: 100%;
-  }
-  
-  .tagline {
-    white-space: normal; /* Allow wrapping on very small screens if needed, or keep nowrap if strict */
-    font-size: 18px; /* Maybe scale down slightly on mobile */
-    max-width: 100%;
+    gap: 16px;
+    padding: 24px;
   }
 }

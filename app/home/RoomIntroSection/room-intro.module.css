@@ -1,28 +1,25 @@
 .section {
   width: 100%;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
-  background-color: var(--cream);
-  color: var(--terracotta);
-  z-index: 1; /* Ensure it has a stacking context, but let subsequent sections (if higher z-index or naturally on top) slide over */
+  background-color: #c7634c !important; /* Force Terracotta BG */
+  color: var(--cream); /* Cream Text */
+  padding: 120px 96px; /* Generous vertical padding */
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 5; /* Ensure it sits above potential overlaps */
 }
 
-.splitLayout {
+.contentWrapper {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  width: 100%;
+  align-items: flex-start;
 }
 
 /* Left Column */
-.textContent {
-  padding: clamp(40px, 5vw, 80px);
+.leftColumn {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: clamp(40px, 5vw, 80px); /* Spacing between header group and details */
-  background-color: var(--cream);
 }
 
 .headerGroup {
@@ -33,41 +30,52 @@
 
 .label {
   font-family: var(--font-sans);
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.2em;
   line-height: 1.4;
   text-transform: uppercase;
-  color: var(--terracotta);
+  color: var(--cream);
 }
 
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(40px, 4vw, 64px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--terracotta);
+  color: var(--cream);
+  margin: 0;
 }
 
 .highlight {
   font-weight: 700;
-  color: var(--terracotta); /* Ensure it matches or stands out if needed */
+  color: var(--cream);
+}
+
+/* Right Column */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 12px; /* Slight alignment adjustment with heading */
 }
 
 .details {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
   max-width: 500px;
 }
 
 .description {
   font-family: var(--font-sans);
-  font-size: clamp(16px, 2.5vw, 20px);
+  font-size: 20px;
   line-height: 1.5;
-  font-weight: 500;
-  color: var(--terracotta);
+  font-weight: 600;
+  color: var(--cream);
+  margin: 0;
 }
 
 .featuresList {
@@ -75,69 +83,39 @@
   padding: 0;
   margin: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .featureItem {
   font-family: var(--font-sans);
-  font-size: clamp(14px, 2vw, 16px);
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(198, 86, 54, 0.3); /* Semi-transparent terracotta */
-  color: var(--terracotta);
+  font-size: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(252, 229, 218, 0.4); /* Semi-transparent cream */
+  color: var(--cream);
   font-weight: 400;
-}
-.featureItem:first-child {
-  border-top: 1px solid rgba(198, 86, 54, 0.3);
-}
-
-/* Right Column */
-.imageContent {
-  background-color: var(--terracotta);
-  padding: 60px; /* Frame padding */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Fill viewport height */
-  /* Removed sticky from here as the whole section is now sticky */
-}
-
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  /* Optional: adds a subtle shadow or border if needed to match exact look */
-}
-
-.image {
-  object-fit: cover;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .section {
-    position: relative; /* Disable sticky on mobile if needed, or keep it */
-    top: auto;
+    padding: 80px 24px;
   }
 
-  .splitLayout {
+  .contentWrapper {
     grid-template-columns: 1fr;
-    height: auto;
-  }
-
-  .textContent {
-    padding: 40px 24px;
-    gap: 40px;
-    height: auto;
-    min-height: auto;
+    gap: 60px;
   }
 
   .heading {
-    font-size: 40px;
+    font-size: 48px;
   }
-
-  .imageContent {
-    height: 500px;
-    padding: 24px;
-    position: relative;
+  
+  .rightColumn {
+    padding-top: 0;
+  }
+  
+  .details {
+    max-width: 100%;
   }
 }

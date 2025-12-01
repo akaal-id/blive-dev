@@ -11,6 +11,8 @@
 .bgImage {
   object-fit: cover;
   z-index: 0;
+  filter: blur(4px); /* Added blur effect */
+  transform: scale(1.05); /* Scale up slightly to avoid blurred edges showing */
 }
 
 /* Gradient overlay from bottom */

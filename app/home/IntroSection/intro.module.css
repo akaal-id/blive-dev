@@ -9,7 +9,7 @@
 }
 
 .container {
-  margin: 0 auto; 
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr; /* Text takes less space than image combo */
   align-items: start; /* Align start for sticky scrolling effect */

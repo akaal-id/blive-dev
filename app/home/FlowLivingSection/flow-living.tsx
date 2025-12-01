@@ -8,6 +8,18 @@ import FadeInSection from '@/src/components/FadeInSection/FadeInSection';
 export default function FlowLivingSection() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
+  // Handler for mouse enter (hover) on desktop
+  const handleMouseEnter = (index: number) => {
+    if (window.innerWidth >= 1024) { // Check if desktop
+      setActiveIndex(index);
+    }
+  };
+
+  // Handler for click (mobile/tablet)
+  const handleClick = (index: number) => {
+    setActiveIndex(index);
+  };
+
   return (
     <section className={styles.section}>
       <FadeInSection className={styles.container}>
@@ -28,10 +40,10 @@ export default function FlowLivingSection() {
           </div>
 
           <div className={styles.imageGrid}>
-            {/* Using placeholders from public/images based on file listing */}
             <div 
               className={`${styles.imageContainer} ${activeIndex === 0 ? styles.imageActive : ''}`}
-              onClick={() => setActiveIndex(0)}
+              onMouseEnter={() => handleMouseEnter(0)}
+              onClick={() => handleClick(0)}
             >
               <Image 
                 src="/images/flow1.jpg" 
@@ -42,7 +54,8 @@ export default function FlowLivingSection() {
             </div>
             <div 
               className={`${styles.imageContainer} ${activeIndex === 1 ? styles.imageActive : ''}`}
-              onClick={() => setActiveIndex(1)}
+              onMouseEnter={() => handleMouseEnter(1)}
+              onClick={() => handleClick(1)}
             >
               <Image 
                 src="/images/flow2.jpg" 
@@ -53,7 +66,8 @@ export default function FlowLivingSection() {
             </div>
             <div 
               className={`${styles.imageContainer} ${activeIndex === 2 ? styles.imageActive : ''}`}
-              onClick={() => setActiveIndex(2)}
+              onMouseEnter={() => handleMouseEnter(2)}
+              onClick={() => handleClick(2)}
             >
               <Image 
                 src="/images/flow3.jpg" 
@@ -64,7 +78,8 @@ export default function FlowLivingSection() {
             </div>
             <div 
               className={`${styles.imageContainer} ${activeIndex === 3 ? styles.imageActive : ''}`}
-              onClick={() => setActiveIndex(3)}
+              onMouseEnter={() => handleMouseEnter(3)}
+              onClick={() => handleClick(3)}
             >
               <Image 
                 src="/images/flow4.jpg" 
@@ -79,14 +94,16 @@ export default function FlowLivingSection() {
             <div className={styles.featureColumn}>
                 <div 
                   className={`${styles.featureItem} ${activeIndex === 0 ? styles.featureActive : ''}`}
-                  onClick={() => setActiveIndex(0)}
+                  onMouseEnter={() => handleMouseEnter(0)}
+                  onClick={() => handleClick(0)}
                 >
                   <span className={styles.featureNumber}>01.</span>
                   Work and rest zones that feel natural
                 </div>
                 <div 
                   className={`${styles.featureItem} ${activeIndex === 1 ? styles.featureActive : ''}`}
-                  onClick={() => setActiveIndex(1)}
+                  onMouseEnter={() => handleMouseEnter(1)}
+                  onClick={() => handleClick(1)}
                 >
                   <span className={styles.featureNumber}>02.</span>
                   Storage that keeps your space clean
@@ -95,14 +112,16 @@ export default function FlowLivingSection() {
             <div className={styles.featureColumn}>
                 <div 
                   className={`${styles.featureItem} ${activeIndex === 2 ? styles.featureActive : ''}`}
-                  onClick={() => setActiveIndex(2)}
+                  onMouseEnter={() => handleMouseEnter(2)}
+                  onClick={() => handleClick(2)}
                 >
                   <span className={styles.featureNumber}>03.</span>
                   Sunlight that boosts energy
                 </div>
                 <div 
                   className={`${styles.featureItem} ${activeIndex === 3 ? styles.featureActive : ''}`}
-                  onClick={() => setActiveIndex(3)}
+                  onMouseEnter={() => handleMouseEnter(3)}
+                  onClick={() => handleClick(3)}
                 >
                   <span className={styles.featureNumber}>04.</span>
                   Bathroom setups that fit fast, flexible days

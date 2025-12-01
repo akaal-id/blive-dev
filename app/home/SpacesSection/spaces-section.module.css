@@ -16,7 +16,7 @@
 
 /* Left Panel */
 .leftPanel {
-  width: 50%;
+  
   height: 100%;
   background-color: #FAEFD4; /* Beige/Cream color from image */
   display: flex;
@@ -69,7 +69,7 @@
 
 /* Right Panel */
 .rightPanel {
-  width: 50%;
+  
   height: 100%;
   background-color: var(--teal);
   overflow: hidden;

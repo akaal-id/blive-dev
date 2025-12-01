@@ -1,167 +1,219 @@
 .section {
-    background-color: var(--terracotta);
-    height: 100vh; /* Force full height for pinning */
-    position: relative;
-    color: var(--white);
-    overflow: hidden;
-    z-index: 2; /* Ensure it covers sticky RoomIntroSection */
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }
-  
-  @media (min-width: 1024px) {
-    .container {
-      flex-direction: row;
-    }
-  }
-  
-  .listColumn {
-    width: 100%;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically initially? */
-    overflow: hidden; /* Hide the scrolling parts */
-    position: relative;
-    justify-content: space-between;
-  }
-  
-  @media (min-width: 1024px) {
-    .listColumn {
-      width: 50%;
-      padding: 96px;
-      height: 100vh;
-    }
-  }
-  
-  .headerContent {
-    margin-bottom: 64px;
-    flex-shrink: 0;
-  }
-  
-  .eyebrow {
-    font-size: clamp(14px, 2vw, 16px);
-  }
-  
-.mainTitle {
-  font-family: var(--font-display);
-  font-size: clamp(24px, 3vw, 64px);
-  line-height: 1.1;
-  margin-top: 24px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  font-weight: 500;
+  background-color: var(--terracotta);
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Occupy full viewport height */
 }
-  
-  .titleRow {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+
+/* --- ROOM CARD CONTAINER --- */
+.roomCardContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Images Wrapper (Top) */
+.cardImagesWrapper {
+  display: flex;
+  width: 100%;
+  flex: 1; /* Take remaining space */
+  position: relative;
+  background-color: #E8E6E1; /* Fallback beige */
+  overflow: hidden; /* Ensure images don't spill */
+}
+
+.leftImageArea,
+.rightImageArea {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.imageMotionWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.roomImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Center Spinner */
+.spinnerContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.rotatingText {
+  animation: rotate 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Details Bar (Bottom) */
+.cardDetailsBar {
+  background-color: var(--terracotta); /* Bottom bar color from image */
+  color: var(--white);
+  padding: 40px 64px 64px 64px; /* Adjusted padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 140px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Left Details: Eyebrow */
+.detailsLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.eyebrowLine1,
+.eyebrowLine2 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Middle Details: Room Name */
+.detailsMiddle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.roomName {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--white);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Right Details: Info & Nav */
+.detailsRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 48px;
+}
+
+.roomSpecs {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  margin: 0 12px;
+  opacity: 0.6;
+}
+
+.navigationControls {
+  display: flex;
+  gap: 12px;
+}
+
+.navButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--white);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: var(--white);
+  color: var(--terracotta);
+  border-color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .section {
+    height: auto; /* Allow auto height on mobile/tablet if content overflows */
+    position: relative; /* Reset sticky if needed, or keep sticky but beware of height */
   }
   
-  .sunsetIcon {
-    width: 64px;
+  .roomCardContainer {
     height: auto;
-    object-fit: contain;
   }
-  
-  .activeRoomWrapper {
+
+  .cardImagesWrapper {
+    flex-direction: column;
+    height: auto;
+    flex: none; /* Reset flex */
+  }
+
+  .leftImageArea,
+  .rightImageArea {
     width: 100%;
-    position: relative;
+    height: 300px;
   }
-  
-  .imageColumn {
+
+  .cardDetailsBar {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 32px;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .detailsLeft, .detailsMiddle, .detailsRight {
     width: 100%;
-    height: 50vh;
-    position: relative;
-    overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   
-  @media (min-width: 1024px) {
-    .imageColumn {
-      width: 50%;
-      height: 100vh;
-      /* No sticky needed if parent is pinned */
-    }
+  .detailsMiddle {
+    order: -1; /* Name on top for mobile */
+  }
+
+  .detailsRight {
+    flex-direction: column;
+    gap: 24px;
   }
   
-  .imageWrapper {
+  .navigationControls {
     width: 100%;
-    height: 100%;
-    position: relative;
+    justify-content: space-between;
   }
-  
-  .imageWrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: var(--terracotta);
-    opacity: 0.2;
-    pointer-events: none;
-    z-index: 100; /* Ensure overlay is on top of images */
-  }
-  
-  .imageContainer {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .imageSlide {
-      position: absolute;
-      inset: 0;
-      transform: translateY(100%);
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-      background-color: var(--terracotta); /* Prevent see-through */
-  }
-  
-  .visibleImage {
-      transform: translateY(0);
-  }
-  
-  .roomImage {
-    object-fit: cover;
-  }
-  
-  .spinnerContainer {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    z-index: 110; /* Above overlay */
-    pointer-events: none;
-  }
-  
-  .rotatingText {
-    animation: rotate 20s linear infinite;
-    transform-origin: center;
-  }
-  
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  
-  /* Mobile Adjustments */
-  @media (max-width: 1024px) {
-    .mainTitle {
-      font-size: 40px;
-    }
-    
-    .spinnerContainer {
-        top: auto;
-        bottom: 30%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-  }
+}

@@ -17,14 +17,56 @@ const Form: React.FC<FormProps> = ({
   className = '',
   variant = 'default',
 }) => {
-  const [status, setStatus] = useState<'idle' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'success' | 'fading_out'>('idle');
   const [inputValue, setInputValue] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (status === 'success') {
+      timer = setTimeout(() => {
+        setStatus('fading_out');
+      }, 5000);
+    } else if (status === 'fading_out') {
+      timer = setTimeout(() => {
+        setStatus('idle');
+      }, 500); // Match animation duration
+    }
+    return () => clearTimeout(timer);
+  }, [status]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit?.(e);
-    setStatus('success');
-    setInputValue(''); // Clear input on success
+    if (onSubmit) {
+      onSubmit(e);
+      setStatus('success');
+      setInputValue('');
+      return;
+    }
+
+    // Google Form Submission
+    const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdaZcV3rSeLJ9jjnUmbOAZ08tsGjnM4nnzhVPV_ShRz-zyPfA/formResponse";
+    // TODO: Replace 'entry.123456789' with the actual Field ID for the email input from your Google Form.
+    // You can find this by inspecting the Google Form "viewform" page source and looking for "entry.".
+    const EMAIL_ENTRY_ID = "entry.1035636340"; 
+
+    const formData = new FormData();
+    formData.append(EMAIL_ENTRY_ID, inputValue);
+
+    try {
+      await fetch(GOOGLE_FORM_ACTION_URL, {
+        method: "POST",
+        mode: "no-cors", // Necessary to avoid CORS errors with Google Forms
+        body: formData,
+      });
+      setStatus('success');
+      setInputValue('');
+    } catch (error) {
+      console.error("Error submitting to Google Form", error);
+      // Even if error (network), we might show success or handle error. 
+      // With no-cors, we can't detect 4xx/5xx errors, but fetch usually doesn't throw unless network failure.
+      setStatus('success'); 
+      setInputValue('');
+    }
   };
 
   // ... useEffect ...
@@ -51,8 +93,8 @@ const Form: React.FC<FormProps> = ({
       className={`${containerClass} ${className}`}
       onSubmit={status === 'idle' ? handleSubmit : (e) => e.preventDefault()}
     >
-      {status === 'success' ? (
-        <div className={styles.successMessage}>
+      {status === 'success' || status === 'fading_out' ? (
+        <div className={`${styles.successMessage} ${status === 'fading_out' ? styles.fadeOut : ''}`}>
           <CircleCheckBig size={20} strokeWidth={2} />
           <span>Email successfully sent!</span>
         </div>

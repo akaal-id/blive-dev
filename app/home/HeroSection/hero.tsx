@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
 
     wrapLetters(headingRef.current);
     wrapLetters(emphasisRef.current);
-    
+
     const tl = createTimeline({ loop: false });
 
     const allLetters = [
@@ -133,20 +133,20 @@ const Hero: React.FC = () => {
         <div className={styles.contentColumn}>
           <div className={styles.headingGroup}>
             <div className={styles.headingLeft}>
-              <h1
-                ref={headingRef}
-                className={`${styles.headingPrimary} text-white drop-shadow-sm`}
-              >
+          <h1
+            ref={headingRef}
+            className={`${styles.headingPrimary} text-white drop-shadow-sm`}
+          >
                 NEIGHBORS
-              </h1>
+          </h1>
             </div>
             <div className={styles.headingRight}>
-              <h1
-                ref={emphasisRef}
-                className={`${styles.headingEmphasis} text-white drop-shadow-sm`}
-              >
+          <h1
+            ref={emphasisRef}
+            className={`${styles.headingEmphasis} text-white drop-shadow-sm`}
+          >
                 WANTED
-              </h1>
+          </h1>
               <div className={styles.underlineWrapper}>
                 <Image 
                   src="/icons/underline.png" 

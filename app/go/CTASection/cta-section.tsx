@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './cta-section.module.css';
-import Form from '@/src/components/Form/Form';
 import Button from '@/src/components/Button/Button';
 import FadeInSection from '@/src/components/FadeInSection/FadeInSection';
 
@@ -20,9 +19,12 @@ export default function CTASection() {
         <h2 className={styles.heading}>BECOME A G.O</h2>
         
         <div className={styles.actions}>
-          <div className={styles.formWrapper}>
-            <Form placeholder="REGISTER HERE" variant="default" />
-          </div>
+          <Button 
+            variant="primary"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfQuv7zUdefc8coSsl_z-kvWD6sCMp0yD0md1uaL7CoNVXYBQ/viewform"
+          >
+            REGISTER HERE
+          </Button>
           
           <Button 
             variant="secondary" 

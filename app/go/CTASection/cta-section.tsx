@@ -8,7 +8,7 @@ export default function CTASection() {
   return (
     <section className={styles.section}>
       <Image
-        src="/images/go/GO-header.jpg"
+        src="/images/go/go-header.webp"
         alt="Background"
         fill
         className={styles.bgImage}

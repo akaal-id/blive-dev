@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Image
-        src="/images/go/GO-header.jpg"
+        src="/images/go/go-header.webp"
         alt="Community Header"
         fill
         className={styles.bgImage}

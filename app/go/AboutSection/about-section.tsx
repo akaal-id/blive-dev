@@ -51,7 +51,7 @@ export default function AboutSection() {
 
       <FadeInSection className={styles.imageContainer}>
         <Image
-          src="/images/go/GO-about.jpg"
+          src="/images/go/go-about.webp"
           alt="Community Common Space"
           fill
           className={styles.image}

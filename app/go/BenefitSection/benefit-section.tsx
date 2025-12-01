@@ -54,7 +54,7 @@ export default function BenefitSection() {
       <FadeInSection className={styles.imageWrapper}>
         <div className={styles.imageContainer}>
           <Image
-            src="/images/go/GO-benefit.jpg"
+            src="/images/go/go-benefit.webp"
             alt="G.O Benefits Environment"
             fill
             className={styles.image}

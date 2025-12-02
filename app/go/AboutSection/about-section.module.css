@@ -47,10 +47,15 @@
   font-size: 18px;
   line-height: 1.6;
   color: var(--foreground);
+  text-align: justify;
 }
 
 .description p + p {
   margin-top: 24px;
+}
+
+.description p {
+  text-align: justify;
 }
 
 .imageContainer {

@@ -1,119 +1,164 @@
 .section {
   width: 100%;
-  background-color: #c7634c !important; /* Force Terracotta BG */
-  color: var(--cream); /* Cream Text */
-  padding: 120px 96px; /* Generous vertical padding */
+  background-color: #c7634c !important; /* Terracotta/reddish-brown background */
+  color: var(--white);
+  padding: 120px 24px;
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 5; /* Ensure it sits above potential overlaps */
+  z-index: 5;
 }
 
 .contentWrapper {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-/* Left Column */
-.leftColumn {
+.content {
   display: flex;
   flex-direction: column;
-}
-
-.headerGroup {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 24px;
 }
 
 .label {
   font-family: var(--font-sans);
   font-size: clamp(12px, 1.5vw, 14px);
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   line-height: 1.4;
   text-transform: uppercase;
-  color: var(--cream);
-}
-
-.heading {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 64px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--cream);
+  color: #f5e6d3; /* Light beige */
   margin: 0;
 }
 
+.heading {
+  font-family: var(--font-sans);
+  font-size: clamp(24px, 6vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .highlight {
-  font-weight: 700;
-  color: var(--cream);
+  font-weight: 500;
+  color: var(--white);
+  font-size: clamp(24px, 6vw, 48px);
 }
 
-/* Right Column */
-.rightColumn {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 12px; /* Slight alignment adjustment with heading */
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 100%;
-  max-width: 500px;
+.headingSuffix {
+  font-weight: 400;
+  color: #f5e6d3; /* Light beige */
+  font-size: clamp(24px, 4vw, 48px);
 }
 
 .description {
   font-family: var(--font-sans);
   font-size: clamp(16px, 2vw, 20px);
   line-height: 1.5;
-  font-weight: 600;
-  color: var(--cream);
+  font-weight: 400;
+  color: var(--white);
   margin: 0;
+  max-width: 600px;
 }
 
-.featuresList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.featuresContainer {
   width: 100%;
+  /*max-width: 1200px;*/
+  margin-top: 40px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
 }
 
 .featureItem {
+  flex: 1;
   font-family: var(--font-sans);
-  font-size: clamp(14px, 1.5vw, 16px);
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(252, 229, 218, 0.4); /* Semi-transparent cream */
-  color: var(--cream);
+  font-size: clamp(14px, 1.8vw, 18px);
+  padding: 24px 32px;
+  color: var(--white);
   font-weight: 400;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Thin white horizontal line */
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .section {
-    padding: 80px 24px;
+    padding: 60px 24px;
   }
 
-  .contentWrapper {
-    grid-template-columns: 1fr;
-    gap: 60px;
+  .content {
+    gap: 24px;
   }
 
-  
-  
-  .rightColumn {
-    padding-top: 0;
+  .heading {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
-  
-  .details {
-    max-width: 100%;
+
+  .headingSuffix {
+    font-size: clamp(20px, 5vw, 36px);
+  }
+
+  .featuresContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .featureItem {
+    padding: 20px 16px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .featureItem:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px;
+  }
+
+  .content {
+    gap: 24px;
+  }
+
+  .heading {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .headingSuffix {
+    font-size: clamp(20px, 5vw, 36px);
+  }
+
+  .featuresContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .featureItem {
+    padding: 20px 16px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .featureItem:last-child {
+    border-bottom: none;
   }
 }

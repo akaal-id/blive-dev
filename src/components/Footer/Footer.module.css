@@ -43,6 +43,17 @@
   color: var(--white);
 }
 
+.addressLink {
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.addressLink:hover {
+  opacity: 0.7;
+}
+
 .formWrapper {
     display: flex;
     flex-direction: column;

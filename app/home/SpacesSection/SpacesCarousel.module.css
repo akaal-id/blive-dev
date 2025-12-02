@@ -1,0 +1,250 @@
+.carouselContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 96px;
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
+
+/* Fixed Frame Container */
+.carouselFrame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* Image Wrapper - Fixed Size */
+.imageWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+/* All frames locked to 4/3 ratio */
+.leftImage,
+.rightImage {
+  aspect-ratio: 4/3;
+}
+
+.middleImage {
+  aspect-ratio: 4/3;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay for left and right (20% teal) */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--teal);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* No overlay for middle - handled by not including overlay div */
+
+.imageLabel {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 400;
+  color: var(--white);
+  margin: 0;
+  text-align: center;
+  padding: 24px 0 24px 0;
+}
+
+/* Navigation Controls */
+.navigationControls {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.navButton {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--white);
+}
+
+.navButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navButton:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .carouselContainer {
+    grid-template-columns: 1fr;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Hide left and right frames on tablet */
+  .carouselFrame:first-child,
+  .carouselFrame:last-child {
+    display: none;
+  }
+
+  /* Middle frame takes full width on tablet */
+  .carouselFrame {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Tablet layout: Image (portrait) + Info section (40vh with teal background) */
+  .imageWrapper.middleImage {
+    width: 100%;
+    aspect-ratio: 3/4 !important; /* Portrait orientation - taller than wide */
+    flex-shrink: 0;
+    height: auto;
+  }
+
+  .imageWrapper.middleImage .imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Info section with teal background (40vh) - contains label and nav */
+  .imageLabel {
+    background-color: var(--teal);
+    padding: 0;
+    font-size: clamp(18px, 5vw, 24px);
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding-top: 60px;
+    padding-bottom: 24px;
+  }
+
+  .navigationControls {
+    background-color: var(--teal);
+    padding: 0 24px 32px 24px;
+    justify-content: center;
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselContainer {
+    grid-template-columns: 1fr;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Hide left and right frames on mobile */
+  .carouselFrame:first-child,
+  .carouselFrame:last-child {
+    display: none;
+  }
+
+  /* Middle frame takes full width on mobile */
+  .carouselFrame {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Mobile layout: Image (portrait) + Info section (40vh with teal background) */
+  .imageWrapper.middleImage {
+    width: 100%;
+    aspect-ratio: 3/4 !important; /* Portrait orientation - taller than wide */
+    flex-shrink: 0;
+    height: auto;
+  }
+
+  .imageWrapper.middleImage .imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Info section with teal background (40vh) - contains label and nav */
+  .imageLabel {
+    background-color: var(--teal);
+    padding: 0;
+    font-size: clamp(18px, 5vw, 24px);
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding-top: 60px;
+    padding-bottom: 24px;
+  }
+
+  .navigationControls {
+    background-color: var(--teal);
+    padding: 0 24px 32px 24px;
+    justify-content: center;
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+

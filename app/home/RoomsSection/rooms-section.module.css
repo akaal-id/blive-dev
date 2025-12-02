@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--terracotta);
-  position: sticky;
+  position: relative;
   top: 0;
   height: 100vh; /* Occupy full viewport height */
 }
@@ -11,7 +11,9 @@
 /* --- ROOM CARD CONTAINER --- */
 .roomCardContainer {
   width: 100%;
+  max-width: 1440px;
   height: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -196,14 +198,14 @@
 
   .cardDetailsBar {
     flex-direction: column;
-    padding: 32px 24px 60px 24px; /* Added 60px bottom padding */
+    padding: 60px 24px 60px 24px; /* Added 60px bottom padding */
     gap: 24px;
     align-items: center; /* Centralize */
     height: auto;
     text-align: center;
   }
 
-  /* Reorder Layout: Nav -> Eyebrow -> Name -> Specs */
+  /* Reorder Layout: Nav -> Name -> Specs -> Eyebrow */
   
   .detailsRight {
     display: contents; /* Unwrap children to participate in grid/flex of parent */
@@ -216,24 +218,24 @@
     gap: 12px; /* Ensure 12px gap */
     margin-bottom: 8px;
   }
-
-  .detailsLeft {
-    order: 2;
-    width: 100%;
-    justify-content: center; /* Centralize */
-    align-items: center; /* Centralize */
-  }
   
   .detailsMiddle {
-    order: 3;
+    order: 2;
     width: 100%;
     justify-content: center; /* Centralize */
     align-items: center; /* Centralize */
   }
 
   .roomSpecs {
+    order: 3;
+    width: 100%;
+    justify-content: center; /* Centralize */
+  }
+
+  .detailsLeft {
     order: 4;
     width: 100%;
     justify-content: center; /* Centralize */
+    align-items: center; /* Centralize */
   }
 }

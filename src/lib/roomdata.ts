@@ -23,8 +23,20 @@ export const roomData: Room[] = [
   },
   {
     id: 3,
-    roomName: "The VIP Room",
+    roomName: "TS Room",
     details: "Rooms for Private, premium stays",
-    images: ["/images/rooms/vip.jpeg", "/images/rooms/VIP 1-A.webp"],
+    images: ["/images/rooms/ts-1.webp", "/images/rooms/ts-2.webp"],
+  },
+  {
+    id: 4,
+    roomName: "Pool Villa 1",
+    details: "Rooms for Private, premium stays",
+    images: ["/images/rooms/VIP 1-A.webp", "/images/rooms/VIP 1-B.webp"],
+  },
+  {
+    id: 5,
+    roomName: "Pool Villa 2",
+    details: "Rooms for Private, premium stays",
+    images: ["/images/rooms/VIP 2-A.webp", "/images/rooms/VIP 2-B.webp"],
   },
 ];

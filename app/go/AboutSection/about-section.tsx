@@ -9,7 +9,7 @@ export default function AboutSection() {
     <section className={styles.section}>
       <FadeInSection>
         <div>
-          <Eyebrow className={styles.eyebrow}>ABOUT GO</Eyebrow>
+          <Eyebrow className={styles.eyebrow}>ABOUT G.O</Eyebrow>
           
           <div className={styles.contentGrid}>
             <div className={styles.column}>

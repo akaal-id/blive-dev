@@ -1,6 +1,6 @@
 .section {
   background-color: var(--cream);
-  padding-bottom: 96px;
+  padding: clamp(40px, 5vw, 96px) clamp(24px, 5vw, 96px) clamp(80px, 10vw, 192px); /* Adjust based on design */
   color: var(--deep-blue);
   overflow: hidden;
   position: relative;
@@ -10,6 +10,7 @@
 
 .container {
   margin: 0 auto;
+  max-width: 1440px;
   display: grid;
   grid-template-columns: 1fr 1fr; /* Text takes less space than image combo */
   align-items: start; /* Align start for sticky scrolling effect */
@@ -32,13 +33,13 @@
 /* Left Content */
 .leftContent {
   display: flex;
-  padding: clamp(80px, 10vw, 192px) clamp(24px, 5vw, 96px) 0 clamp(24px, 5vw, 96px); /* Added bottom padding for scroll clearance */
+  padding: 96px 96px 64px 0;
   flex-direction: column;
   height: 100%;
   width: 100%;
   justify-content: space-between;
   position: sticky;
-  top: 192px; /* Sticky positioning below nav/hero offset */
+  /*top: 192px; /* Sticky positioning below nav/hero offset */
 }
 
 .headerGroup {
@@ -60,7 +61,7 @@
 
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(24px, 5vw, 48px);
   line-height: 1;
   font-weight: 500;
   color: var(--deep-blue);
@@ -103,6 +104,7 @@
   font-weight: 600;
   line-height: 1.4;
   max-width: 400px;
+  text-align: justify;
 }
 
 .detailColumns {
@@ -117,6 +119,7 @@
   font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.6;
   color: var(--dark-silver);
+  text-align: justify;
 }
 
 /* Right Images */
@@ -165,23 +168,55 @@
 }
 
 @media (max-width: 1024px) {
+  .section {
+    padding: clamp(40px, 5vw, 80px) clamp(24px, 4vw, 48px) clamp(60px, 8vw, 120px);
+    min-height: auto;
+  }
+
   .container {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 24px;
-    /* align-items: start; inherited */
+    gap: 0;
+  }
+
+  .heading {
+    font-size: clamp(32px, 6vw, 48px);
   }
 
   .leftContent {
-    order: 2;
-    position: static; /* Disable sticky on mobile */
     padding: 0;
+    position: static;
+    order: 2;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .headerGroup {
+    margin-bottom: 32px;
+  }
+
+  .subheading {
+    max-width: 100%;
+  }
+
+  .textContent {
+    gap: 32px;
+  }
+
+  .waveIconWrapper {
+    width: clamp(32px, 4vw, 40px);
+    height: clamp(12px, 2vw, 15px);
+  }
+
+  .detailColumns {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   
   .imageArea {
     order: 1;
     min-height: auto;
-    height: 400px; /* Fixed height for mobile image */
+    height: clamp(300px, 50vh, 500px);
+    margin-bottom: 40px;
   }
 
   .largeImageWrapper {
@@ -191,27 +226,84 @@
   }
   
   .largeImageWrapper::after {
-    display: none; /* Optional: hide overlay on mobile if not needed */
+    display: none;
+  }
+  
+  .floatingImageWrapper {
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .heading {
-    font-size: 48px;
+  .section {
+    padding: clamp(32px, 5vw, 60px) clamp(20px, 4vw, 32px) clamp(48px, 8vw, 96px);
+    min-height: auto;
   }
 
-  .section {
-    flex-flow: row-reverse;
+  .container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .heading {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  .leftContent {
+    padding: 0;
+    position: static;
+    order: 2;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .headerGroup {
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  .eyebrow {
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  .textContent {
+    gap: 24px;
+  }
+
+  .subheading {
+    font-size: clamp(16px, 3.5vw, 18px);
+    max-width: 100%;
   }
 
   .waveIconWrapper {
-    width: 40px;
-    height: 15px;
+    width: clamp(28px, 5vw, 36px);
+    height: clamp(10px, 2vw, 14px);
   }
 
   .detailColumns {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .detailText {
+    font-size: clamp(14px, 3vw, 16px);
+  }
+  
+  .imageArea {
+    order: 1;
+    min-height: auto;
+    height: clamp(250px, 45vh, 400px);
+    margin-bottom: 32px;
+  }
+
+  .largeImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .largeImageWrapper::after {
+    display: none;
   }
   
   .floatingImageWrapper {

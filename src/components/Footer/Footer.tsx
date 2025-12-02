@@ -25,8 +25,15 @@ const Footer: React.FC = () => {
           </div>
           
           <address className={styles.address}>
-            Jl. Nelayan No.24, Canggu, Kec. Kuta Utara, <br />
-            Kabupaten Badung, Bali 80361
+            <Link 
+              href="https://maps.app.goo.gl/ooZbLrvE3AxipME37" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.addressLink}
+            >
+              Jl. Nelayan No.24, Canggu, Kec. Kuta Utara, <br />
+              Kabupaten Badung, Bali 80361
+            </Link>
           </address>
 
           <div className={styles.formWrapper}>
@@ -49,10 +56,7 @@ const Footer: React.FC = () => {
             <div className={styles.linksGroup}>
                 <h4 className={styles.columnTitle}>Contact Us</h4>
                 <div className={styles.contactList}>
-                    <Link href="https://instagram.com/blive.bali" target="_blank" className={styles.contactItem}>
-                        <Instagram size={18} />
-                        <span>blive.bali</span>
-                    </Link>
+                    
                     <Link href="mailto:hello@blive.id" className={styles.contactItem}>
                         <Mail size={18} />
                         <span>hello@blive.id</span>

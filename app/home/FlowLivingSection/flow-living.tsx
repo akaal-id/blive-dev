@@ -29,13 +29,12 @@ export default function FlowLivingSection() {
 
         <div className={styles.contentColumn}>
           <h2 className={styles.heading}>
-            Made for People Who <br/> <strong>Work, Move, and Grow</strong>
+            Made for People Who <strong>Work, Move, and Grow</strong>
           </h2>
 
           <div className={styles.descriptionSection}>
             <div className={styles.mainDescription}>
-              <p>Digital nomads want a room that helps them stay in flow.</p>
-              <p>BLive rooms are designed to keep your day smooth, bright, and focused.</p>
+              <p>Digital nomads want a room that helps them stay in flow, and BLive rooms are designed to keep your day smooth, bright, and focused.</p>
             </div>
           </div>
 
@@ -70,20 +69,8 @@ export default function FlowLivingSection() {
               onClick={() => handleClick(2)}
             >
               <Image 
-                src="/images/flow3.jpg" 
+                src="/images/flow3.webp" 
                 alt="Lounge area" 
-                fill
-                className={styles.image}
-              />
-            </div>
-            <div 
-              className={`${styles.imageContainer} ${activeIndex === 3 ? styles.imageActive : ''}`}
-              onMouseEnter={() => handleMouseEnter(3)}
-              onClick={() => handleClick(3)}
-            >
-              <Image 
-                src="/images/flow4.jpg" 
-                alt="Community space" 
                 fill
                 className={styles.image}
               />
@@ -91,48 +78,35 @@ export default function FlowLivingSection() {
           </div>
 
           <div className={styles.featuresList}>
-            <div className={styles.featureColumn}>
-                <div 
-                  className={`${styles.featureItem} ${activeIndex === 0 ? styles.featureActive : ''}`}
-                  onMouseEnter={() => handleMouseEnter(0)}
-                  onClick={() => handleClick(0)}
-                >
-                  <span className={styles.featureNumber}>01.</span>
-                  Work and rest zones that feel natural
-                </div>
-                <div 
-                  className={`${styles.featureItem} ${activeIndex === 1 ? styles.featureActive : ''}`}
-                  onMouseEnter={() => handleMouseEnter(1)}
-                  onClick={() => handleClick(1)}
-                >
-                  <span className={styles.featureNumber}>02.</span>
-                  Storage that keeps your space clean
-                </div>
+            <div 
+              className={`${styles.featureItem} ${activeIndex === 0 ? styles.featureActive : ''}`}
+              onMouseEnter={() => handleMouseEnter(0)}
+              onClick={() => handleClick(0)}
+            >
+              <span className={styles.featureNumber}>01.</span>
+              Work and rest zones that feel natural
             </div>
-            <div className={styles.featureColumn}>
-                <div 
-                  className={`${styles.featureItem} ${activeIndex === 2 ? styles.featureActive : ''}`}
-                  onMouseEnter={() => handleMouseEnter(2)}
-                  onClick={() => handleClick(2)}
-                >
-                  <span className={styles.featureNumber}>03.</span>
-                  Sunlight that boosts energy
-                </div>
-                <div 
-                  className={`${styles.featureItem} ${activeIndex === 3 ? styles.featureActive : ''}`}
-                  onMouseEnter={() => handleMouseEnter(3)}
-                  onClick={() => handleClick(3)}
-                >
-                  <span className={styles.featureNumber}>04.</span>
-                  Bathroom setups that fit fast, flexible days
-                </div>
+            <div 
+              className={`${styles.featureItem} ${activeIndex === 1 ? styles.featureActive : ''}`}
+              onMouseEnter={() => handleMouseEnter(1)}
+              onClick={() => handleClick(1)}
+            >
+              <span className={styles.featureNumber}>02.</span>
+              Storage that keeps your space clean
+            </div>
+            <div 
+              className={`${styles.featureItem} ${activeIndex === 2 ? styles.featureActive : ''}`}
+              onMouseEnter={() => handleMouseEnter(2)}
+              onClick={() => handleClick(2)}
+            >
+              <span className={styles.featureNumber}>03.</span>
+              Sunlight that boosts energy
             </div>
           </div>
 
           <div className={styles.bottomContent}>
             <div className={styles.bottomDescription}>
-              <p>Flow Living gives you a room that feels light and easy.</p>
-              <p>A space that keeps up with your ideas, your work, and your rhythm.</p>
+              <p>Flow Living gives you a room that feels light and easy. A space that keeps up with your ideas, your work, and your rhythm.</p>
             </div>
             
             <div className={styles.tagline}>

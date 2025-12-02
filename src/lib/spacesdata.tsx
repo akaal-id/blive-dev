@@ -11,8 +11,8 @@ export const spacesData = [
   },
   {
     id: 3,
-    name: "Outdoor Bar",
-    image: "/images/image (7) 1.jpg"
+    name: "Canggu Sunset Club",
+    image: "/images/bar.jpg"
   },
   {
     id: 4,
@@ -30,21 +30,37 @@ export const spacesData = [
     image: "/images/flow1.jpg"
   },
   {
-    id: 7,
-    name: "Shared Shower Room",
-    image: "/images/flow4.jpg"
-  },
-  {
-    id: 8,
-    name: "Shared Bathroom",
-    image: "/images/flow2.jpg"
-  },
-  {
     id: 9,
     name: "Main Corridor",
-    image: "/images/flow3.jpg"
+    image: "/images/flow3.webp"
+  },
+  {
+    id: 10,
+    name: "Jacuzzi",
+    image: "/images/jacuzi.jpg"
+  },
+  {
+    id: 11,
+    name: "Sauna",
+    image: "/images/sauna.jpg"
+  },
+  {
+    id: 12,
+    name: "Pool Bar",
+    image: "/images/poolbar.jpg"
+  },
+  {
+    id: 13,
+    name: "Restaurant",
+    image: "/images/restaurant.jpg"
+  },
+  {
+    id: 14,
+    name: "Rooftop Cabana",
+    image: "/images/cabana.jpg"
   }
 ];
+
 
 
 

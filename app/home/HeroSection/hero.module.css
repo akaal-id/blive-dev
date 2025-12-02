@@ -59,6 +59,9 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .headingGroup {
@@ -162,35 +165,60 @@
 
 /* Mobile Styles */
 @media (max-width: 1024px) {
-  .headingPrimary,
-  .headingEmphasis {
-    font-size: clamp(48px, 8vw, 64px);
+  .section {
+    padding: 60px 24px 120px 24px;
   }
-  
-  .bottomContainer {
+  .heroRoot {
+    height: 100vh;
+  }
+
+  .logoContainer {
+    top: 32px;
+    left: 24px;
+    width: 150px; /* Smaller logo on tablet */
+    transform: none;
+  }
+
+  .headingGroup {
     flex-direction: column;
     align-items: center;
-    padding: 0 24px 48px;
+    gap: 8px;
   }
   
+  .headingRight {
+    width: 100%;
+  }
+
+  .underlineWrapper {
+    margin-top: -5px;
+  }
+
+  .bottomContainer {
+    bottom: 0; /* Sit on bottom */
+    gap: 32px;
+    padding: 0 0 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .tagline {
+    font-size: 18px;
+    padding: 0 24px;
     text-align: center;
-    padding-left: 0;
     max-width: 600px;
   }
-  
+
   .actionTray {
+    flex-direction: column;
     width: 100%;
+    gap: 16px;
+    padding: 24px 24px 64px 24px;
     min-width: auto;
-    padding: 24px;
-  }
-  
-  .logoContainer {
-    left: 24px; /* Smaller padding on mobile */
   }
 }
 
 @media (max-width: 768px) {
+  
   .heroRoot {
     height: 100vh;
   }

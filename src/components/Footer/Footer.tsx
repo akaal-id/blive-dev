@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
               width={100}
               height={32}
               className={styles.logo}
+              quality={90}
             />
           </div>
           

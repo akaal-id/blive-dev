@@ -14,6 +14,7 @@ export default function IntroSection() {
               alt="Yoga flow" 
               fill
               className={styles.image}
+              quality={90}
             />
         </div>
 
@@ -31,6 +32,7 @@ export default function IntroSection() {
                     width={64}
                     height={24}
                     className={styles.waveIcon}
+                    quality={90}
                   />
                 </div>
               </strong>
@@ -61,6 +63,7 @@ export default function IntroSection() {
               fill
               className={styles.image}
               priority
+              quality={90}
             />
           </div>
         </div>

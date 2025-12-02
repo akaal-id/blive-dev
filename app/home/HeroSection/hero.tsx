@@ -156,6 +156,7 @@ const Hero: React.FC = () => {
                   width={200} 
                   height={20} 
                   className={styles.underline}
+                  quality={90}
                 />
               </div>
             </div>

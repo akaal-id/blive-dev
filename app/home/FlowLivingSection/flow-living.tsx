@@ -49,6 +49,7 @@ export default function FlowLivingSection() {
                 alt="Interior stairs" 
                 fill
                 className={styles.image}
+                quality={90}
               />
             </div>
             <div 
@@ -61,6 +62,7 @@ export default function FlowLivingSection() {
                 alt="Kitchen area" 
                 fill
                 className={styles.image}
+                quality={90}
               />
             </div>
             <div 
@@ -73,6 +75,7 @@ export default function FlowLivingSection() {
                 alt="Lounge area" 
                 fill
                 className={styles.image}
+                quality={90}
               />
             </div>
           </div>

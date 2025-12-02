@@ -8,15 +8,17 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  /* iOS Safari fix for blurry background images */
+  -webkit-background-size: cover;
+  background-attachment: scroll;
   overflow: hidden;
   z-index: 0;
   /* iOS Safari fix for blurry background images */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   image-rendering: auto;
-  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 .heroRoot::before {
@@ -48,10 +50,8 @@
   align-items: center; /* Center align */
   justify-content: center;
   pointer-events: none;
-  transform: translateY(-5%) translateZ(0); /* Slight offset to account for bottom bar + iOS fix */
-  -webkit-transform: translateY(-5%) translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  transform: translateY(-5%) translate3d(0, 0, 0); /* Slight offset to account for bottom bar + iOS fix */
+  -webkit-transform: translateY(-5%) translate3d(0, 0, 0);
 }
 
 /* Logo Container - Top Left */
@@ -59,7 +59,7 @@
   position: absolute;
   top: 48px;
   left: 48px;
-  z-index: 10;
+  z-index: 100;
   pointer-events: auto;
 }
 
@@ -68,12 +68,11 @@
   width: auto;
   object-fit: contain;
   /* iOS Safari fix for blurry images */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   image-rendering: auto;
-  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 /* Content Column */
@@ -142,12 +141,11 @@
   /* Apply Terracotta Filter */
   filter: brightness(0) saturate(100%) invert(53%) sepia(27%) saturate(1831%) hue-rotate(325deg) brightness(85%) contrast(87%);
   /* iOS Safari fix for blurry images */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   image-rendering: auto;
-  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 
@@ -200,22 +198,29 @@
   }
   .heroRoot {
     height: 100vh;
+    overflow: visible;
   }
 
   .logoContainer {
-    top: 32px;
+    top: max(32px, env(safe-area-inset-top, 32px));
     left: 50%;
-    transform: translateX(-50%) translateZ(0);
-    -webkit-transform: translateX(-50%) translateZ(0);
+    transform: translateX(-50%) translate3d(0, 0, 0);
+    -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
     background: none;
     padding: 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    z-index: 100;
+    position: absolute;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .logoImage {
     height: 32px;
     width: auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .headingGroup {
@@ -260,22 +265,29 @@
   
   .heroRoot {
     height: 100vh;
+    overflow: visible;
   }
 
   .logoContainer {
-    top: 32px;
+    top: max(32px, env(safe-area-inset-top, 32px));
     left: 50%;
-    transform: translateX(-50%) translateZ(0);
-    -webkit-transform: translateX(-50%) translateZ(0);
+    transform: translateX(-50%) translate3d(0, 0, 0);
+    -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
     background: none;
     padding: 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    z-index: 100;
+    position: absolute;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .logoImage {
     height: 32px;
     width: auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .headingGroup {

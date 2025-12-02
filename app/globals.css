@@ -59,20 +59,22 @@ h1, h2, h3, h4, h5, h6 {
 img,
 [class*="Image"],
 [class*="image"] {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  /* Remove problematic properties that cause blurriness on iOS */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   /* Use auto for smooth scaling on photos and icons */
   image-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent subpixel rendering issues */
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 /* Ensure Next.js Image components render crisply on iOS */
 img[src*="/icons/"],
 img[src*="/images/"] {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  /* DO NOT use will-change - it causes blurriness on iOS */
 }

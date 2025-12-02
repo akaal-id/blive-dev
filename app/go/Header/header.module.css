@@ -12,13 +12,12 @@
   object-fit: cover;
   z-index: 0;
   filter: blur(4px); /* Added blur effect */
-  transform: scale(1.05) translateZ(0); /* Scale up slightly to avoid blurred edges showing + iOS fix */
-  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translate3d(0, 0, 0); /* Scale up slightly to avoid blurred edges showing + iOS fix */
+  -webkit-transform: scale(1.05) translate3d(0, 0, 0);
   /* iOS Safari fix for blurry images */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   image-rendering: auto;
-  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 .overlay {
@@ -33,7 +32,8 @@
   position: absolute;
   top: 0;
   padding: 24px 48px;
-  z-index: 10;
+  z-index: 100;
+  pointer-events: auto;
 }
 
 .logoImage {
@@ -41,12 +41,11 @@
   width: auto;
   object-fit: contain;
   /* iOS Safari fix for blurry images */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   image-rendering: auto;
-  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 .content {
@@ -71,20 +70,30 @@
 }
 
 @media (max-width: 1024px) {
+  .header {
+    overflow: visible;
+  }
+  
   .logoContainer {
-    top: 24px;
+    top: max(24px, env(safe-area-inset-top, 24px));
     left: 50%;
-    transform: translateX(-50%) translateZ(0);
-    -webkit-transform: translateX(-50%) translateZ(0);
+    transform: translateX(-50%) translate3d(0, 0, 0);
+    -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
     background: none;
     padding: 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    z-index: 100;
+    position: absolute;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .logoImage {
     height: 32px;
     width: auto;
+    display: block;
+    visibility: visible;
+    opacity: 1;
   }
 
   .heading {
@@ -95,22 +104,29 @@
 @media (max-width: 768px) {
   .header {
     height: 50vh;
+    overflow: visible;
   }
   
   .logoContainer {
-    top: 24px;
+    top: max(24px, env(safe-area-inset-top, 24px));
     left: 50%;
-    transform: translateX(-50%) translateZ(0);
-    -webkit-transform: translateX(-50%) translateZ(0);
+    transform: translateX(-50%) translate3d(0, 0, 0);
+    -webkit-transform: translateX(-50%) translate3d(0, 0, 0);
     background: none;
     padding: 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    z-index: 100;
+    position: absolute;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .logoImage {
     height: 32px;
     width: auto;
+    display: block;
+    visibility: visible;
+    opacity: 1;
   }
   
   .heading {

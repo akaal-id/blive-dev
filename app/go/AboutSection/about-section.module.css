@@ -69,12 +69,11 @@
 .image {
   object-fit: cover;
   /* iOS Safari fix for blurry images */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   image-rendering: auto;
-  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 @media (max-width: 1024px) {

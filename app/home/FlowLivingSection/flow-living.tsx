@@ -50,6 +50,7 @@ export default function FlowLivingSection() {
                 fill
                 className={styles.image}
                 quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
             <div 
@@ -63,6 +64,7 @@ export default function FlowLivingSection() {
                 fill
                 className={styles.image}
                 quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
             <div 
@@ -76,6 +78,7 @@ export default function FlowLivingSection() {
                 fill
                 className={styles.image}
                 quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
           </div>

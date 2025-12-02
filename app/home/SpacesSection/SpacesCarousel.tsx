@@ -112,6 +112,7 @@ export default function SpacesCarousel() {
                 fill
                 className={styles.image}
                 quality={90}
+                sizes="(max-width: 1024px) 0vw, 25vw"
               />
               <div className={styles.overlay}></div>
             </motion.div>
@@ -140,6 +141,7 @@ export default function SpacesCarousel() {
                 fill
                 className={styles.image}
                 quality={90}
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* No overlay for middle */}
             </motion.div>
@@ -178,6 +180,7 @@ export default function SpacesCarousel() {
                 fill
                 className={styles.image}
                 quality={90}
+                sizes="(max-width: 1024px) 0vw, 25vw"
               />
               <div className={styles.overlay}></div>
             </motion.div>

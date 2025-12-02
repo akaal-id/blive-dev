@@ -94,6 +94,7 @@ const RoomsSection = () => {
                                 fill
                                 className={styles.roomImage}
                                 priority
+                                unoptimized={leftImage.includes(' ') || leftImage.includes('VIP')}
                             />
                         </div>
                         <div className={styles.rightImageArea}>
@@ -103,6 +104,7 @@ const RoomsSection = () => {
                                 fill
                                 className={styles.roomImage}
                                 priority
+                                unoptimized={rightImage.includes(' ') || rightImage.includes('VIP')}
                             />
                         </div>
                     </motion.div>

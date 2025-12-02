@@ -10,6 +10,13 @@
   background-repeat: no-repeat;
   overflow: hidden;
   z-index: 0;
+  /* iOS Safari fix for blurry background images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .heroRoot::before {
@@ -41,7 +48,10 @@
   align-items: center; /* Center align */
   justify-content: center;
   pointer-events: none;
-  transform: translateY(-5%); /* Slight offset to account for bottom bar */
+  transform: translateY(-5%) translateZ(0); /* Slight offset to account for bottom bar + iOS fix */
+  -webkit-transform: translateY(-5%) translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Logo Container - Top Left */
@@ -57,6 +67,14 @@
   height: 64px;
   width: auto;
   object-fit: contain;
+  /* iOS Safari fix for blurry images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 /* Content Column */
@@ -124,6 +142,13 @@
   height: auto;
   /* Apply Terracotta Filter */
   filter: brightness(0) saturate(100%) invert(53%) sepia(27%) saturate(1831%) hue-rotate(325deg) brightness(85%) contrast(87%);
+  /* iOS Safari fix for blurry images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 
@@ -181,9 +206,12 @@
   .logoContainer {
     top: 32px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0);
+    -webkit-transform: translateX(-50%) translateZ(0);
     background: none;
     padding: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .logoImage {
@@ -238,9 +266,12 @@
   .logoContainer {
     top: 32px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0);
+    -webkit-transform: translateX(-50%) translateZ(0);
     background: none;
     padding: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .logoImage {

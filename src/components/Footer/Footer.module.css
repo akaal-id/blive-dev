@@ -33,6 +33,13 @@
 .logo {
   object-fit: contain;
   filter: brightness(0) invert(1); /* Make logo white */
+  /* iOS Safari fix for blurry images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .address {

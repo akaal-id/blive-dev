@@ -54,3 +54,20 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   line-height: 1em;
 }
+
+/* iOS Safari fix for blurry images - global styles */
+img,
+[class*="Image"],
+[class*="image"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Ensure Next.js Image components render crisply on iOS */
+img[src*="/icons/"],
+img[src*="/images/"] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}

@@ -12,7 +12,13 @@
   object-fit: cover;
   z-index: 0;
   filter: blur(4px); /* Added blur effect */
-  transform: scale(1.05); /* Scale up slightly to avoid blurred edges showing */
+  transform: scale(1.05) translateZ(0); /* Scale up slightly to avoid blurred edges showing + iOS fix */
+  -webkit-transform: scale(1.05) translateZ(0);
+  /* iOS Safari fix for blurry images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Gradient overlay from bottom */

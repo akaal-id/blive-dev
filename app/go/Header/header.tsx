@@ -20,9 +20,11 @@ export default function Header() {
          <Image
           src="/icons/BLive Logo.svg"
           alt="BLive Logo"
-          width={120}
-          height={40}
-          className="object-contain"
+          width={200}
+          height={64}
+          className={styles.logoImage}
+          unoptimized
+          priority
         />
       </div>
 

@@ -125,7 +125,9 @@ const Hero: React.FC = () => {
           alt="BLive Logo"
           width={200}
           height={64}
-          className="object-contain"
+          className={styles.logoImage}
+          unoptimized
+          priority
         />
       </div>
 

@@ -53,6 +53,12 @@
   pointer-events: auto;
 }
 
+.logoImage {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* Content Column */
 .contentColumn {
   display: flex;
@@ -174,9 +180,15 @@
 
   .logoContainer {
     top: 32px;
-    left: 24px;
-    width: 150px; /* Smaller logo on tablet */
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    padding: 0;
+  }
+
+  .logoImage {
+    height: 32px;
+    width: auto;
   }
 
   .headingGroup {
@@ -225,9 +237,15 @@
 
   .logoContainer {
     top: 32px;
-    left: 24px;
-    width: 150px; /* Smaller logo on mobile */
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    padding: 0;
+  }
+
+  .logoImage {
+    height: 32px;
+    width: auto;
   }
 
   .headingGroup {

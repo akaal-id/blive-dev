@@ -20,7 +20,7 @@
 
 .heading {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: clamp(24px, 5vw, 48px);
   font-weight: 500;
   color: var(--deep-blue);
   margin-bottom: 32px;
@@ -41,7 +41,7 @@
 
 .intro p {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
   line-height: 1.6;
   color: var(--foreground);
   text-align: justify;
@@ -71,13 +71,13 @@
 .benefitTitle {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
   color: var(--dark-silver);
 }
 
 .benefitDesc {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
   color: var(--dark-silver);
   line-height: 1.5;
   text-align: justify;
@@ -132,6 +132,18 @@
   }
 
   .heading {
-    font-size: 36px;
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  .intro p {
+    font-size: clamp(16px, 3.5vw, 18px);
+  }
+
+  .benefitTitle {
+    font-size: clamp(16px, 3.5vw, 18px);
+  }
+
+  .benefitDesc {
+    font-size: clamp(14px, 3vw, 16px);
   }
 }

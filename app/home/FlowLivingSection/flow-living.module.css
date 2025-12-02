@@ -79,8 +79,13 @@
 }
 
 .imageActive .image {
-  transform: scale(1.05) translate3d(0, 0, 0);
-  -webkit-transform: scale(1.05) translate3d(0, 0, 0);
+  transform: scale(1.05) translateZ(0);
+  -webkit-transform: scale(1.05) translateZ(0);
+  /* Ensure crisp scaling */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .imageActive::after {
@@ -92,14 +97,13 @@
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease;
-  /* iOS Safari fix for blurry images - Retina Display */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
+  /* iOS Safari fix for blurry images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   image-rendering: auto;
-  -webkit-perspective: 1000;
-  perspective: 1000;
+  will-change: transform;
 }
 
 .descriptionSection {
@@ -138,8 +142,8 @@
 
 .featureItem:hover,
 .featureActive {
-  transform: translateX(12px) translate3d(0, 0, 0);
-  -webkit-transform: translateX(12px) translate3d(0, 0, 0);
+  transform: translateX(12px) translateZ(0);
+  -webkit-transform: translateX(12px) translateZ(0);
   color: var(--terracotta);
 }
 
@@ -198,7 +202,7 @@
   .imageContainer {
     display: none;
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
   }
 
   .imageContainer.imageActive {
@@ -245,7 +249,7 @@
   .imageContainer {
     display: none;
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
   }
 
   .imageContainer.imageActive {

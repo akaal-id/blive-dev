@@ -94,8 +94,8 @@ const RoomsSection = () => {
                                 fill
                                 className={styles.roomImage}
                                 priority
-                                unoptimized={leftImage.includes(' ') || leftImage.includes('VIP')}
-                                quality={leftImage.includes(' ') || leftImage.includes('VIP') ? undefined : 90}
+                                unoptimized
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
                         <div className={styles.rightImageArea}>
@@ -105,8 +105,8 @@ const RoomsSection = () => {
                                 fill
                                 className={styles.roomImage}
                                 priority
-                                unoptimized={rightImage.includes(' ') || rightImage.includes('VIP')}
-                                quality={rightImage.includes(' ') || rightImage.includes('VIP') ? undefined : 90}
+                                unoptimized
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
                     </motion.div>

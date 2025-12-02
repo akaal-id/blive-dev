@@ -49,14 +49,13 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
-  /* iOS Safari fix for blurry images - Retina Display */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
+  /* iOS Safari fix for blurry images */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   image-rendering: auto;
-  -webkit-perspective: 1000;
-  perspective: 1000;
+  will-change: transform;
 }
 
 /* Overlay for left and right (20% teal) */
@@ -108,8 +107,8 @@
 }
 
 .navButton:active {
-  transform: scale(0.95) translate3d(0, 0, 0);
-  -webkit-transform: scale(0.95) translate3d(0, 0, 0);
+  transform: scale(0.95) translateZ(0);
+  -webkit-transform: scale(0.95) translateZ(0);
 }
 
 /* Responsive Design */
@@ -143,10 +142,10 @@
     gap: 0;
   }
 
-  /* Tablet layout: Image (landscape) + Info section (40vh with teal background) */
+  /* Tablet layout: Image (portrait) + Info section (40vh with teal background) */
   .imageWrapper.middleImage {
     width: 100%;
-    aspect-ratio: 4/3 !important; /* Landscape orientation */
+    aspect-ratio: 3/4 !important; /* Portrait orientation - taller than wide */
     flex-shrink: 0;
     height: auto;
   }
@@ -215,10 +214,10 @@
     gap: 0;
   }
 
-  /* Mobile layout: Image (landscape) + Info section (40vh with teal background) */
+  /* Mobile layout: Image (portrait) + Info section (40vh with teal background) */
   .imageWrapper.middleImage {
     width: 100%;
-    aspect-ratio: 4/3 !important; /* Landscape orientation */
+    aspect-ratio: 3/4 !important; /* Portrait orientation - taller than wide */
     flex-shrink: 0;
     height: auto;
   }

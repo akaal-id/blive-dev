@@ -111,7 +111,7 @@ export default function SpacesCarousel() {
                 alt={leftSpace.name}
                 fill
                 className={styles.image}
-                quality={90}
+                unoptimized
                 sizes="(max-width: 1024px) 0vw, 25vw"
               />
               <div className={styles.overlay}></div>
@@ -140,7 +140,7 @@ export default function SpacesCarousel() {
                 alt={middleSpace.name}
                 fill
                 className={styles.image}
-                quality={90}
+                unoptimized
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* No overlay for middle */}
@@ -179,7 +179,7 @@ export default function SpacesCarousel() {
                 alt={rightSpace.name}
                 fill
                 className={styles.image}
-                quality={90}
+                unoptimized
                 sizes="(max-width: 1024px) 0vw, 25vw"
               />
               <div className={styles.overlay}></div>

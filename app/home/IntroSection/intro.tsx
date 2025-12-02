@@ -14,7 +14,8 @@ export default function IntroSection() {
               alt="Yoga flow" 
               fill
               className={styles.image}
-              quality={90}
+              unoptimized
+              sizes="15vw"
             />
         </div>
 
@@ -32,7 +33,7 @@ export default function IntroSection() {
                     width={64}
                     height={24}
                     className={styles.waveIcon}
-                    quality={90}
+                    unoptimized
                   />
                 </div>
               </strong>
@@ -58,12 +59,13 @@ export default function IntroSection() {
           {/* Main Background Image (Courtyard) */}
           <div className={styles.largeImageWrapper}>
             <Image 
-              src="/images/intro1.jpg" 
+              src="/images/intro.jpg" 
               alt="BLive Courtyard" 
               fill
               className={styles.image}
               priority
-              quality={90}
+              unoptimized
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
         </div>

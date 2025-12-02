@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/image (5) 1.png', // Using the hero image as OG image
+        url: '/images/image (5) 1.jpg', // Using the hero image as OG image
         width: 1200,
         height: 630,
         alt: 'BLive Coliving Community in Bali',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'BLive | Neighbors Wanted',
     description: 'A community coliving home for creators, nomads, and slow travellers in Canggu, Bali.',
-    images: ['/images/image (5) 1.png'],
+    images: ['/images/image (5) 1.jpg'],
   },
   icons: {
     icon: '/icons/onlyb.png',

@@ -51,11 +51,12 @@
   width: 100%;
   height: 100%;
   /* iOS Safari fix for blurry images */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   image-rendering: auto;
-  -webkit-perspective: 1000;
-  perspective: 1000;
+  will-change: transform;
 }
 
 /* Center Spinner */
@@ -63,12 +64,14 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) translate3d(0, 0, 0);
-  -webkit-transform: translate(-50%, -50%) translate3d(0, 0, 0);
+  transform: translate(-50%, -50%) translateZ(0);
+  -webkit-transform: translate(-50%, -50%) translateZ(0);
   width: 120px;
   height: 120px;
   z-index: 20;
   pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .rotatingText {
@@ -77,8 +80,8 @@
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg) translate3d(0, 0, 0); }
-  to { transform: rotate(360deg) translate3d(0, 0, 0); }
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
 }
 
 /* Details Bar (Bottom) */

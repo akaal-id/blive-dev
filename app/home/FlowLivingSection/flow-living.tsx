@@ -49,8 +49,8 @@ export default function FlowLivingSection() {
                 alt="Interior stairs" 
                 fill
                 className={styles.image}
-                quality={90}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
             </div>
             <div 
@@ -63,8 +63,8 @@ export default function FlowLivingSection() {
                 alt="Kitchen area" 
                 fill
                 className={styles.image}
-                quality={90}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
             </div>
             <div 
@@ -73,12 +73,12 @@ export default function FlowLivingSection() {
               onClick={() => handleClick(2)}
             >
               <Image 
-                src="/images/flow3.webp" 
+                src="/images/flow3.png" 
                 alt="Lounge area" 
                 fill
                 className={styles.image}
-                quality={90}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
             </div>
           </div>

@@ -2,7 +2,7 @@ export const spacesData = [
   {
     id: 1,
     name: "Casual Lounge",
-    image: "/images/intro1.jpg"
+    image: "/images/intro.jpg"
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ export const spacesData = [
   {
     id: 9,
     name: "Main Corridor",
-    image: "/images/flow3.webp"
+    image: "/images/flow3.png"
   },
   {
     id: 10,

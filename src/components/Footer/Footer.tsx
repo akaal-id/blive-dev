@@ -16,12 +16,12 @@ const Footer: React.FC = () => {
         <div className={styles.leftColumn}>
           <div className={styles.logoContainer}>
              <Image
-              src="/icons/BLive Logo.png"
+              src="/icons/BLive Logo.svg"
               alt="BLive Logo"
               width={100}
               height={32}
               className={styles.logo}
-              quality={90}
+              unoptimized
             />
           </div>
           

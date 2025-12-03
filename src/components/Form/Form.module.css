@@ -16,7 +16,7 @@
 /* Footer Variant */
 .formContainerFooter {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   line-height: 100%;
   width: 100%;
   display: flex;
@@ -24,15 +24,43 @@
   justify-content: space-between;
   background-color: transparent;
   color: var(--white);
+  border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White with opacity */
-  padding-bottom: 12px;
+  padding: 0 16px 4px 16px;
   gap: 16px;
+  outline: none;
+  height: clamp(36px, 4vw, 44px);
+}
+
+.formContainerFooter:focus,
+.formContainerFooter:focus-within {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .inputFooter {
   color: var(--white);
   text-transform: none; /* Regular case for email input */
   letter-spacing: normal;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.inputFooter:focus,
+.inputFooter:active,
+.inputFooter:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .inputFooter::placeholder {
@@ -65,7 +93,7 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 8px 8px 8px 24px;
-  height: 44px;
+  height: clamp(36px, 4vw, 44px);
   width: 100%;
   min-width: 300px;
   display: flex;
@@ -126,7 +154,7 @@
   letter-spacing: 0.4em;
   text-transform: uppercase;
   padding: 8px 8px 8px 24px;
-  height: 44px;
+  height: clamp(36px, 4vw, 44px);
   width: 100%;
   min-width: 300px; /* Reduced min-width for responsiveness */
   display: flex;

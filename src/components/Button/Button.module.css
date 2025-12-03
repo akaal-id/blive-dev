@@ -5,7 +5,7 @@
   letter-spacing: 0.4em;
   text-transform: uppercase; /* "auto capitalization" usually implies capitalizing, but "uppercase" matches 40% spacing usually */
   padding: 8px 8px 8px 24px; /* pup/down 8, pright 8, pleft 24 */
-  height: 44px;
+  height: clamp(36px, 4vw, 44px);
   width: fit-content; /* w-hug */
   display: inline-flex;
   align-items: center;

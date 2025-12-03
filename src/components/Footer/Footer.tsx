@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <div className={styles.leftColumn}>
           <div className={styles.logoContainer}>
              <Image
-              src="/icons/BLive Logo.svg"
+              src="/icons/wlogo.png"
               alt="BLive Logo"
               width={100}
               height={32}

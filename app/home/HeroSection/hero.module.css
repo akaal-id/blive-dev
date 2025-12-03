@@ -32,6 +32,8 @@
   -webkit-transform: translateY(-5%) translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Logo Container - Top Left */
@@ -210,6 +212,12 @@
     opacity: 1 !important;
   }
 
+  .overlay {
+    transform: translateY(-3%) translateZ(0);
+    -webkit-transform: translateY(-3%) translateZ(0);
+    padding: 16px;
+  }
+
   .headingGroup {
     flex-direction: column;
     align-items: center;
@@ -218,6 +226,14 @@
   
   .headingRight {
     width: auto;
+  }
+
+  .headingPrimary,
+  .headingEmphasis {
+    font-size: 48px;
+    line-height: 1.1;
+    overflow: visible;
+    padding: 4px 0;
   }
 
   .underlineWrapper {
@@ -279,6 +295,12 @@
     opacity: 1 !important;
   }
 
+  .overlay {
+    transform: translateY(-3%) translateZ(0);
+    -webkit-transform: translateY(-3%) translateZ(0);
+    padding: 16px;
+  }
+
   .headingGroup {
     flex-direction: column;
     align-items: center;
@@ -287,6 +309,14 @@
   
   .headingRight {
     width: auto;
+  }
+
+  .headingPrimary,
+  .headingEmphasis {
+    font-size: 40px;
+    line-height: 1.1;
+    overflow: visible;
+    padding: 4px 0;
   }
 
   .underlineWrapper {

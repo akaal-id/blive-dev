@@ -12,7 +12,7 @@ export const roomData: Room[] = [
     details: "16 SQ l Clean and efficient",
     images: [
       "/images/rooms/StandardA-1.jpg",
-      "/images/rooms/StandardA-2.webp"
+      "/images/rooms/StandardA-3.webp"
     ],
   },
   {

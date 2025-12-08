@@ -18,12 +18,11 @@ export default function Header() {
       
       <div className={styles.logoContainer}>
          <Image
-          src="/icons/BLive Logo.svg"
+          src="/icons/wlogo.png"
           alt="BLive Logo"
-          width={150}
-          height={48}
+          width={200}
+          height={64}
           className={styles.logoImage}
-          unoptimized
           priority
         />
       </div>

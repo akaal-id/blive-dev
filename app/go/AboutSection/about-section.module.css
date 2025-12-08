@@ -330,20 +330,35 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    display: flex;
+    flex-direction: column;
+  }
+
   .leftColumn {
-    min-height: 50vh;
+    min-height: auto;
+    display: contents;
   }
 
   .leftContent {
     padding: 48px 24px;
+    order: 1;
+    background-color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*min-height: 50vh;*/
   }
 
   .imageContainer {
     height: 35vh;
+    order: 3;
+    position: relative;
   }
 
   .rightColumn {
     padding: 48px 24px;
+    order: 2;
   }
 
   .rightContent {
@@ -371,14 +386,29 @@
   .whoContainer1 {
     grid-template-columns: 1fr;
     min-height: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .whoLeftColumn {
     padding: 48px 24px;
+    order: 4;
   }
 
   .whoRightColumn {
     min-height: 40vh;
+    order: 5;
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .whoImageContainer {
+    width: 100%;
+    height: 100%;
+    min-height: 40vh;
+    position: relative;
+    display: block;
   }
 
   .whoEyebrow {

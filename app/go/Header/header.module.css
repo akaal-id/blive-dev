@@ -122,6 +122,8 @@
 
   .leftSection {
     text-align: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .rightSection {
@@ -155,6 +157,7 @@
 
   .heading {
     font-size: clamp(22px, 5vw, 36px);
+    text-align: center;
   }
 
   .subheadline {
@@ -177,6 +180,8 @@
 
   .leftSection {
     text-align: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .rightSection {
@@ -210,6 +215,10 @@
   
   .heading {
     font-size: clamp(20px, 5vw, 28px);
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .subheadline {

@@ -10,10 +10,10 @@
 
 .bgImage {
   object-fit: cover;
+  object-position: center;
   z-index: 0;
-  filter: blur(4px); /* Added blur effect */
-  transform: scale(1.05) translateZ(0); /* Scale up slightly to avoid blurred edges showing + iOS fix */
-  -webkit-transform: scale(1.05) translateZ(0);
+  transform: translateZ(0); /* iOS fix */
+  -webkit-transform: translateZ(0);
   /* iOS Safari fix for blurry images */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -24,21 +24,26 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--terracotta);
-  opacity: 0.2;
+  background-color: var(--teal);
+  opacity: 0.9;
   z-index: 1;
 }
 
 .logoContainer {
   position: absolute;
   top: 0;
-  padding: 24px 48px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  -webkit-transform: translateX(-50%) translateZ(0);
+  padding: 24px 0;
   z-index: 100;
   pointer-events: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .logoImage {
-  height: 64px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   /* iOS Safari fix for blurry images */
@@ -53,21 +58,54 @@
 .content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  color: var(--white);
-  max-width: 900px;
-  padding: 0 20px;
+  color: var(--cream-2);
+  width: 100%;
+  max-width: 1400px;
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
 
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(32px, 6vw, 64px);
+  font-size: clamp(24px, 4.5vw, 48px);
   line-height: 1.2;
   font-weight: 400;
   letter-spacing: -0.02em;
+  margin: 0;
 }
 
 .bold {
+  font-weight: 700;
+}
+
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.subheadline {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.boldText {
   font-weight: 700;
 }
 
@@ -76,6 +114,21 @@
     overflow: visible;
   }
   
+  .content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 32px;
+  }
+
+  .leftSection {
+    text-align: center;
+  }
+
+  .rightSection {
+    text-align: center;
+    align-items: center;
+  }
+
   .logoContainer {
     top: max(24px, env(safe-area-inset-top, 24px));
     left: 50%;
@@ -93,7 +146,7 @@
   }
 
   .logoImage {
-    height: 32px;
+    height: 28px;
     width: auto;
     display: block;
     visibility: visible;
@@ -101,14 +154,34 @@
   }
 
   .heading {
-    font-size: clamp(28px, 7vw, 48px);
+    font-size: clamp(22px, 5vw, 36px);
+  }
+
+  .subheadline {
+    font-size: clamp(13px, 2vw, 16px);
   }
 }
 
 @media (max-width: 768px) {
   .header {
-    height: 50vh;
+    height: auto;
+    min-height: 400px;
     overflow: visible;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .leftSection {
+    text-align: center;
+  }
+
+  .rightSection {
+    text-align: center;
+    align-items: center;
   }
   
   .logoContainer {
@@ -128,7 +201,7 @@
   }
 
   .logoImage {
-    height: 32px;
+    height: 24px;
     width: auto;
     display: block;
     visibility: visible;
@@ -136,6 +209,10 @@
   }
   
   .heading {
-    font-size: clamp(24px, 6vw, 32px);
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  .subheadline {
+    font-size: clamp(12px, 2.5vw, 14px);
   }
 }

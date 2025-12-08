@@ -1,68 +1,57 @@
 .section {
-  padding: 192px 96px 96px 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.leftColumn {
   background-color: var(--cream);
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  position: relative;
 }
 
-.eyebrow {
-  margin-bottom: 40px;
-  color: var(--deep-blue) !important;
-}
-
-.contentGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-}
-
-.column {
+.leftContent {
+  padding: 96px 60px;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  align-items: center;
+  justify-content: center;
 }
 
-.heading {
+.title {
   font-family: var(--font-display);
-  font-size: clamp(24px, 5vw, 48px);
-  font-weight: 500;
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 400;
   color: var(--deep-blue);
-  line-height: 1.1;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 500px;
+  text-align: center;
+}
+
+.highlightWrapper {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .highlight {
   font-weight: 700;
 }
 
-.divider {
+.underline {
+  position: absolute;
+  left: 0;
+  bottom: -8px;
   width: 100%;
-  height: 1px;
-  background-color: var(--dark-silver);
-  opacity: 0.3;
-}
-
-.description {
-  font-family: var(--font-sans);
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.6;
-  color: var(--foreground);
-  text-align: justify;
-}
-
-.description p + p {
-  margin-top: 24px;
-}
-
-.description p {
-  text-align: justify;
+  height: auto;
 }
 
 .imageContainer {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 50%;
   position: relative;
-  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -77,27 +66,349 @@
   will-change: transform;
 }
 
+.rightColumn {
+  background-color: var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 60px;
+}
+
+.rightContent {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--cream-2);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--cream-2);
+  margin: 0;
+}
+
+.boldDescription {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--cream-2);
+  margin: 0;
+}
+
+/* Who Container 1 */
+.whoContainer1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 60vh;
+}
+
+.whoLeftColumn {
+  background-color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 60px;
+}
+
+.whoLeftContent {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.whoEyebrow {
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.whoDescription {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin: 0;
+}
+
+.whoRightColumn {
+  position: relative;
+  overflow: hidden;
+}
+
+.whoImageContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.whoImageContainer .image {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Characteristics Container */
+.characteristicsContainer {
+  background-color: var(--cream-2);
+  padding: 96px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.characteristicsTitle {
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.card {
+  padding: 64px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
+.cardText {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin: 0;
+  text-align: left;
+  max-width: 280px;
+}
+
+.cardDeepBlue {
+  background-color: var(--deep-blue);
+}
+
+.cardTerracotta {
+  background-color: var(--terracotta);
+}
+
+.cardTeal {
+  background-color: var(--teal);
+}
+
+.cardCream {
+  background-color: var(--cream);
+}
+
+.cardCream .cardText {
+  color: var(--deep-blue);
+}
+
+.characteristicsFooter {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--deep-blue);
+  margin: 0;
+  text-align: center;
+  max-width: 900px;
+}
+
 @media (max-width: 1024px) {
   .section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .leftColumn {
+    min-height: 60vh;
+  }
+
+  .leftContent {
     padding: 64px 48px;
   }
-  
-  .contentGrid {
+
+  .imageContainer {
+    height: 40vh;
+  }
+
+  .rightColumn {
+    padding: 64px 48px;
+  }
+
+  .title {
+    font-size: clamp(22px, 3vw, 28px);
+  }
+
+  .underline {
+    bottom: -6px;
+  }
+
+  .description,
+  .boldDescription {
+    font-size: clamp(13px, 2vw, 16px);
+  }
+
+  /* Who Container 1 responsive */
+  .whoContainer1 {
     grid-template-columns: 1fr;
-    gap: 48px;
+    min-height: auto;
+  }
+
+  .whoLeftColumn {
+    padding: 64px 48px;
+  }
+
+  .whoRightColumn {
+    min-height: 50vh;
+  }
+
+  .whoDescription {
+    font-size: clamp(13px, 2vw, 16px);
+  }
+
+  /* Characteristics Container responsive */
+  .characteristicsContainer {
+    padding: 64px 48px;
+    gap: 56px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    padding: 56px 32px;
+    min-height: 240px;
+  }
+
+  .cardText {
+    font-size: clamp(13px, 2vw, 16px);
+  }
+
+  .characteristicsFooter {
+    font-size: clamp(15px, 2vw, 18px);
   }
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding: 48px 24px;
-  }
-  
-  .heading {
-    font-size: clamp(28px, 7vw, 40px);
+  .leftColumn {
+    min-height: 50vh;
   }
 
-  .description {
-    font-size: clamp(16px, 3.5vw, 18px);
+  .leftContent {
+    padding: 48px 24px;
+  }
+
+  .imageContainer {
+    height: 35vh;
+  }
+
+  .rightColumn {
+    padding: 48px 24px;
+  }
+
+  .rightContent {
+    gap: 24px;
+  }
+
+  .title {
+    font-size: clamp(20px, 5vw, 26px);
+  }
+
+  .underline {
+    bottom: -5px;
+  }
+
+  .eyebrow {
+    font-size: clamp(11px, 1.5vw, 12px);
+  }
+
+  .description,
+  .boldDescription {
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  /* Who Container 1 responsive */
+  .whoContainer1 {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .whoLeftColumn {
+    padding: 48px 24px;
+  }
+
+  .whoRightColumn {
+    min-height: 40vh;
+  }
+
+  .whoEyebrow {
+    font-size: clamp(11px, 1.5vw, 12px);
+  }
+
+  .whoDescription {
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  /* Characteristics Container responsive */
+  .characteristicsContainer {
+    padding: 48px 24px;
+    gap: 48px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    padding: 48px 24px;
+    min-height: 220px;
+  }
+
+  .cardText {
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  .characteristicsFooter {
+    font-size: clamp(14px, 2.5vw, 16px);
   }
 }

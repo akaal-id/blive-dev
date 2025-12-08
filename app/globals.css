@@ -4,6 +4,7 @@
   /* Color Palette */
   --terracotta: #c7634c;
   --cream: #FCE5DA;
+  --cream-2: #FBECE1;
   --teal: #88BFB4;
   --deep-blue: #256379;
   --dark-blue: #0B1C3C; /* Added dark blue */
@@ -19,6 +20,7 @@
 @theme inline {
   --color-terracotta: var(--terracotta);
   --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
   --color-teal: var(--teal);
   --color-deep-blue: var(--deep-blue);
   --color-dark-blue: var(--dark-blue);
